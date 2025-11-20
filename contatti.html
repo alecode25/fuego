@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contatti | FUEGO Rimini Nightlife</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="contatti.css"> 
+    </head>
+<body>
+
+    <header id="main-header">
+        <div class="logo">FUEGO <span>RIMINI</span></div>
+        <div class="hamburger-menu"><i class="fas fa-bars"></i></div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#foto-gallery">Foto</a></li>
+                <li><a href="index.html#video-wall">Video</a></li>
+                <li><a href="#contatti" class="active-link">Contatti</a></li>
+                <li><a href="index.html#tickets" class="btn-nav">Prenota</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="contact-hero">
+        <div class="overlay"></div>
+        <div class="hero-content">
+            <h1>CONTATTACI 🔥</h1>
+            <p>Siamo pronti ad accendere la tua notte. Scrivici o chiamaci per informazioni su tavoli, eventi e liste.</p>
+        </div>
+    </section>
+
+    <section id="contact-info" class="sezione-dark">
+        <h2 class="section-title">INFO LINE E PRENOTAZIONI</h2>
+        
+        <div class="info-grid">
+            
+            <div class="info-card">
+                <i class="fas fa-phone-alt"></i>
+                <h3>CHIAMA ORA</h3>
+                <p>Per prenotazioni veloci e urgenze.</p>
+                <a href="tel:+393331234567" class="info-link">+39 333 1234567</a>
+            </div>
+
+            <div class="info-card">
+                <i class="fab fa-whatsapp"></i>
+                <h3>WHATSAPP</h3>
+                <p>Info su liste, tavoli, compleanni.</p>
+                <a href="https://wa.me/393331234567" target="_blank" class="info-link">Manda un messaggio</a>
+            </div>
+
+            <div class="info-card">
+                <i class="fas fa-envelope"></i>
+                <h3>EMAIL</h3>
+                <p>Per proposte commerciali o partnership.</p>
+                <a href="mailto:info@fuego-rimini.it" class="info-link">info@fuego-rimini.it</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact-form" class="sezione-dark">
+        <h2 class="section-title">SCRIVICI SUBITO</h2>
+        <div class="form-container">
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="nome">Nome e Cognome</label>
+                    <input type="text" id="nome" name="nome" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Telefono</label>
+                    <input type="tel" id="telefono" name="telefono">
+                </div>
+                <div class="form-group">
+                    <label for="messaggio">Messaggio (Specificare data evento)</label>
+                    <textarea id="messaggio" name="messaggio" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="mega-button">INVIA RICHIESTA</button>
+            </form>
+        </div>
+    </section>
+    
+    <section id="location" class="sezione-dark">
+        <h2 class="section-title">DOVE SIAMO</h2>
+        <p class="subtitle">Viale Regina Elena, 100 - Rimini (RN)</p>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2868.5085351834277!2d12.570222376999238!3d44.06282362402927!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4e13!3m3!1m2!1s0x132eab5921f93f35%3A0xc60737a2491a6d45!2sRimini!5e0!3m2!1sit!2sit!4v1700400000000!5m2!1sit!2sit" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+
+
+    <footer>
+        <p>© 2025 FUEGO STAFF RIMINI</p>
+    </footer>
+
+    <script src="contatti.js"></script>
+</body>
+</html>

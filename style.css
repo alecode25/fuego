@@ -88,24 +88,26 @@
 }
 
 
-
-
-
-/* =========================================
-   1. VARIABILI & SETUP (TEMA FUEGO)
-   ========================================= */
 :root {
-    --bg-color: #050505;       /* Nero Profondo */
-    --box-bg: #111111;         /* Grigio Scuro per le card */
-    --primary: #ff3c00;        /* Rosso Fuoco acceso */
-    --secondary: #ffaa00;      /* Giallo/Arancio */
+    --primary: #ff3c00;
+    /* Rosso Fuoco acceso */
+    --secondary: #ffaa00;
+    /* Giallo/Arancio */
+    --bg-color: #050505;
+    /* Nero profondo */
+    --box-bg: #111111;
+    /* Grigio scuro per le card */
+
     --text-main: #ffffff;
     --text-dim: #b3b3b3;
+
     --gradient: linear-gradient(45deg, var(--primary), var(--secondary));
     --shadow-glow: 0 0 20px rgba(255, 60, 0, 0.4);
-    --font-title: 'Oswald', sans-serif;
-    --font-body: 'Montserrat', sans-serif;
+
+    --font-title: "Oswald", sans-serif;
+    --font-body: "Montserrat", sans-serif;
 }
+
 
 * {
     margin: 0;
@@ -113,19 +115,28 @@
     box-sizing: border-box;
 }
 
+
 body {
     font-family: var(--font-body);
     background-color: var(--bg-color);
     color: var(--text-main);
-    overflow-x: hidden; /* Evita scroll orizzontale indesiderato */
+    overflow-x: hidden;
 }
 
-a { text-decoration: none; color: inherit; }
-ul { list-style: none; }
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
 
 /* =========================================
-   2. HEADER & NAVBAR
-   ========================================= */
+   2. HEADER & NAVBAR
+   ========================================= */
 #main-header {
     position: fixed;
     top: 0;
@@ -134,11 +145,12 @@ ul { list-style: none; }
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(5, 5, 5, 0.85); /* Sfondo semi-trasparente */
-    backdrop-filter: blur(10px);      /* Effetto vetro (Glassmorphism) */
+    background: rgba(5, 5, 5, 0.85);
+    backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255, 60, 0, 0.3);
     z-index: 1000;
 }
+
 
 .logo {
     font-family: var(--font-title);
@@ -150,9 +162,17 @@ ul { list-style: none; }
     text-shadow: 0 0 10px var(--primary);
 }
 
-.logo span { color: white; }
 
-.nav-menu ul { display: flex; gap: 30px; }
+.logo span {
+    color: white;
+}
+
+
+.nav-menu ul {
+    display: flex;
+    gap: 30px;
+}
+
 
 .nav-menu a {
     font-weight: 700;
@@ -161,7 +181,13 @@ ul { list-style: none; }
     transition: 0.3s;
 }
 
-.nav-menu a:hover { color: var(--primary); text-shadow: 0 0 10px var(--primary); }
+
+.nav-menu a:hover,
+.nav-menu .active-link {
+    color: var(--primary);
+    text-shadow: 0 0 10px var(--primary);
+}
+
 
 .btn-nav {
     background: var(--gradient);
@@ -170,9 +196,22 @@ ul { list-style: none; }
     color: black !important;
 }
 
-/* Hamburger menu (Nascosto su PC) */
-.hamburger-menu { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
-.bar { width: 30px; height: 3px; background: white; }
+
+/* Hamburger menu */
+.hamburger-menu {
+    display: none;
+    cursor: pointer;
+}
+
+.hamburger-menu i {
+    font-size: 1.5rem;
+    color: white;
+}
+
+
+
+
+
 
 /* =========================================
    3. HERO SECTION
@@ -193,8 +232,34 @@ ul { list-style: none; }
 /* Overlay scuro per leggere il testo */
 .overlay {
     position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.3), var(--bg-color));
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), var(--bg-color));
+}
+
+@media (max-width: 768px) {
+    #contact-hero {
+        min-height: 40vh;
+        padding: 40px 0 20px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    .hero-content {
+        width: 100%;
+        max-width: 95vw;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 10px 30px 10px;
+        background: none;
+    }
+   
 }
 
 .hero-content { z-index: 2; padding: 0 20px; }

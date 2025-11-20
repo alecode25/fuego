@@ -87,26 +87,24 @@
 }
 
 
-:root {
-    --primary: #ff3c00;
-    /* Rosso Fuoco acceso */
-    --secondary: #ffaa00;
-    /* Giallo/Arancio */
-    --bg-color: #050505;
-    /* Nero profondo */
-    --box-bg: #111111;
-    /* Grigio scuro per le card */
 
+
+
+/* =========================================
+   1. VARIABILI & SETUP (TEMA FUEGO)
+   ========================================= */
+:root {
+    --bg-color: #050505;       /* Nero Profondo */
+    --box-bg: #111111;         /* Grigio Scuro per le card */
+    --primary: #ff3c00;        /* Rosso Fuoco acceso */
+    --secondary: #ffaa00;      /* Giallo/Arancio */
     --text-main: #ffffff;
     --text-dim: #b3b3b3;
-
     --gradient: linear-gradient(45deg, var(--primary), var(--secondary));
     --shadow-glow: 0 0 20px rgba(255, 60, 0, 0.4);
-
-    --font-title: "Oswald", sans-serif;
-    --font-body: "Montserrat", sans-serif;
+    --font-title: 'Oswald', sans-serif;
+    --font-body: 'Montserrat', sans-serif;
 }
-
 
 * {
     margin: 0;
@@ -114,28 +112,19 @@
     box-sizing: border-box;
 }
 
-
 body {
     font-family: var(--font-body);
     background-color: var(--bg-color);
     color: var(--text-main);
-    overflow-x: hidden;
+    overflow-x: hidden; /* Evita scroll orizzontale indesiderato */
 }
 
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-ul {
-    list-style: none;
-}
-
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
 
 /* =========================================
-   2. HEADER & NAVBAR
-   ========================================= */
+   2. HEADER & NAVBAR
+   ========================================= */
 #main-header {
     position: fixed;
     top: 0;
@@ -144,12 +133,11 @@ ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(5, 5, 5, 0.85);
-    backdrop-filter: blur(10px);
+    background: rgba(5, 5, 5, 0.85); /* Sfondo semi-trasparente */
+    backdrop-filter: blur(10px);      /* Effetto vetro (Glassmorphism) */
     border-bottom: 1px solid rgba(255, 60, 0, 0.3);
     z-index: 1000;
 }
-
 
 .logo {
     font-family: var(--font-title);
@@ -161,17 +149,9 @@ ul {
     text-shadow: 0 0 10px var(--primary);
 }
 
+.logo span { color: white; }
 
-.logo span {
-    color: white;
-}
-
-
-.nav-menu ul {
-    display: flex;
-    gap: 30px;
-}
-
+.nav-menu ul { display: flex; gap: 30px; }
 
 .nav-menu a {
     font-weight: 700;
@@ -180,13 +160,7 @@ ul {
     transition: 0.3s;
 }
 
-
-.nav-menu a:hover,
-.nav-menu .active-link {
-    color: var(--primary);
-    text-shadow: 0 0 10px var(--primary);
-}
-
+.nav-menu a:hover { color: var(--primary); text-shadow: 0 0 10px var(--primary); }
 
 .btn-nav {
     background: var(--gradient);
@@ -195,22 +169,9 @@ ul {
     color: black !important;
 }
 
-
-/* Hamburger menu */
-.hamburger-menu {
-    display: none;
-    cursor: pointer;
-}
-
-.hamburger-menu i {
-    font-size: 1.5rem;
-    color: white;
-}
-
-
-
-
-
+/* Hamburger menu (Nascosto su PC) */
+.hamburger-menu { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+.bar { width: 30px; height: 3px; background: white; }
 
 /* =========================================
    3. HERO SECTION
@@ -231,34 +192,8 @@ ul {
 /* Overlay scuro per leggere il testo */
 .overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), var(--bg-color));
-}
-
-@media (max-width: 768px) {
-    #contact-hero {
-        min-height: 40vh;
-        padding: 40px 0 20px 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-    }
-    .hero-content {
-        width: 100%;
-        max-width: 95vw;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 40px 10px 30px 10px;
-        background: none;
-    }
-   
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3), var(--bg-color));
 }
 
 .hero-content { z-index: 2; padding: 0 20px; }
@@ -515,10 +450,11 @@ footer { background: black; padding: 30px; text-align: center; color: #555; font
 }
 
 /* =========================================
-   NUOVA SEZIONE: CONTEST DEL MESE STYLES
+   NUOVA SEZIONE: CONTEST DEL MESE STYLES (Base PC)
    ========================================= */
 #contest-del-mese {
-    padding: 80px 0;
+    /* Aggiungiamo un piccolo padding laterale anche per schermi grandi */
+    padding: 80px 20px; 
     background: var(--bg-color);
 }
 
@@ -526,7 +462,7 @@ footer { background: black; padding: 30px; text-align: center; color: #555; font
     display: flex;
     flex-direction: column; 
     align-items: center;
-    max-width: 800px;
+    max-width: 800px; 
     margin: 0 auto;
     padding: 20px;
     background: var(--box-bg);
@@ -609,6 +545,46 @@ footer { background: black; padding: 30px; text-align: center; color: #555; font
     background: white;
     box-shadow: 0 0 30px var(--primary);
 }
+
+
+/* =========================================
+   MEDIA QUERY: STILI SOLO PER SCHERMI PICCOLI (Mobile)
+   ========================================= */
+@media (max-width: 768px) {
+    .contest-box {
+        padding: 20px 10px; 
+    }
+
+    .contest-poster {
+        max-width: 300px; 
+        border: 3px solid white; 
+    }
+
+    .contest-info h3 {
+        font-size: 2.2rem; 
+    }
+    
+    .data-contest {
+        font-size: 1.2rem;
+    }
+
+    .dettagli-contest {
+        font-size: 1rem; 
+    }
+
+    .cta-contest {
+        padding: 12px 25px;
+        margin-top: 20px;
+    }
+}
+
+/* Animazione pulse per la scritta SOLD OUT */
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
 
 /* Adattamento Responsive per la sezione Contest */
 @media (min-width: 600px) {

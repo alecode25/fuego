@@ -1,29 +1,37 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contatti | FUEGO Rimini Nightlife</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Oswald:wght@400;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <link rel="stylesheet" href="contatti.css"> 
-    </head>
+
+    <link rel="stylesheet" href="contatti.css">
+</head>
+
 <body>
 
     <header id="main-header">
-        <div class="logo">FUEGO <span>RIMINI</span></div>
+        <div class="logo-combo">
+            <img src="logo.png" class="logo-header" alt="FUEGO Rimini Logo">
+            <div class="logo">FUEGO <span>RIMINI</span></div>
+        </div>
         <div class="hamburger-menu"><i class="fas fa-bars"></i></div>
         <nav class="nav-menu">
             <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="index.html#foto-gallery">Foto</a></li>
-            <li><a href="index.html#video-wall">Video</a></li>
-            <li><a href="index.html#eventi-mese">Eventi</a></li> 
-            <li><a href="index.html#staff">Staff</a></li>
-            <li><a href="index.html#tickets" class="btn-nav">Prenota</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#foto-gallery">Foto</a></li>
+                <li><a href="index.html#video-wall">Video</a></li>
+                <li><a href="index.html#eventi-mese">Eventi</a></li>
+                <li><a href="index.html#staff">Staff</a></li>
+                <li><a href="index.html#contest-del-mese">Contest</a></li>
+                <li><a href="index.html#tickets" class="btn-nav">Prevendita</a></li>
             </ul>
         </nav>
     </header>
@@ -32,15 +40,16 @@
         <div class="overlay"></div>
         <div class="hero-content">
             <h1>CONTATTACI 🔥</h1>
-            <p>Siamo pronti ad accendere la tua notte. Scrivici o chiamaci per informazioni su tavoli, eventi e liste.</p>
+            <p>Siamo pronti ad accendere la tua notte. Scrivici o chiamaci per informazioni su tavoli, eventi e liste.
+            </p>
         </div>
     </section>
 
     <section id="contact-info" class="sezione-dark">
         <h2 class="section-title">INFO LINE E PRENOTAZIONI</h2>
-        
+
         <div class="info-grid">
-            
+
             <div class="info-card">
                 <i class="fas fa-phone-alt"></i>
                 <h3>CHIAMA ORA</h3>
@@ -88,20 +97,33 @@
             </form>
         </div>
     </section>
-    
+
     <section id="location" class="sezione-dark">
         <h2 class="section-title">DOVE SIAMO</h2>
         <p class="subtitle">Viale Regina Elena, 100 - Rimini (RN)</p>
         <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2868.5085351834277!2d12.570222376999238!3d44.06282362402927!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4e13!3m3!1m2!1s0x132eab5921f93f35%3A0xc60737a2491a6d45!2sRimini!5e0!3m2!1sit!2sit!4v1700400000000!5m2!1sit!2sit" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2868.5085351834277!2d12.570222376999238!3d44.06282362402927!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4e13!3m3!1m2!1s0x132eab5921f93f35%3A0xc60737a2491a6d45!2sRimini!5e0!3m2!1sit!2sit!4v1700400000000!5m2!1sit!2sit"
+                width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
     </section>
 
 
-    <footer>
+    <footer class="footer-social">
+        <div class="social-row">
+            <a href="https://www.instagram.com/fuego_official_events/" target="_blank" aria-label="Instagram" class="ig-link">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.tiktok.com/@staff_fuego_?is_from_webapp=1&sender_device=pc" target="_blank" aria-label="TikTok" class="tt-link">
+                <i class="fab fa-tiktok"></i>
+            </a>
+        </div>
         <p>© 2025 FUEGO STAFF RIMINI</p>
     </footer>
 
+
+
     <script src="contatti.js"></script>
 </body>
+
 </html>

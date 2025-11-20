@@ -1,6 +1,3 @@
-
-
-
 /* =========================================
    NUOVA SEZIONE: EVENTI DEL MESE
    ========================================= */
@@ -12,7 +9,7 @@
 
 .event-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
     padding: 0 5%;
     max-width: 1300px;
@@ -39,7 +36,7 @@
 
 .event-card img {
     width: 100%;
-    height: 400px; 
+    height: 400px;
     object-fit: cover;
     display: block;
     transition: 0.5s;
@@ -82,31 +79,33 @@
 @media (max-width: 768px) {
     .event-grid {
         /* Permette un layout a colonna singola su schermi molto piccoli */
-        grid-template-columns: 1fr; 
+        grid-template-columns: 1fr;
     }
 }
 
 
+
+
+
+/* =========================================
+   1. VARIABILI & SETUP (TEMA FUEGO)
+   ========================================= */
 :root {
+    --bg-color: #050505;
+    /* Nero Profondo */
+    --box-bg: #111111;
+    /* Grigio Scuro per le card */
     --primary: #ff3c00;
     /* Rosso Fuoco acceso */
     --secondary: #ffaa00;
     /* Giallo/Arancio */
-    --bg-color: #050505;
-    /* Nero profondo */
-    --box-bg: #111111;
-    /* Grigio scuro per le card */
-
     --text-main: #ffffff;
     --text-dim: #b3b3b3;
-
     --gradient: linear-gradient(45deg, var(--primary), var(--secondary));
     --shadow-glow: 0 0 20px rgba(255, 60, 0, 0.4);
-
-    --font-title: "Oswald", sans-serif;
-    --font-body: "Montserrat", sans-serif;
+    --font-title: 'Oswald', sans-serif;
+    --font-body: 'Montserrat', sans-serif;
 }
-
 
 * {
     margin: 0;
@@ -114,14 +113,13 @@
     box-sizing: border-box;
 }
 
-
 body {
     font-family: var(--font-body);
     background-color: var(--bg-color);
     color: var(--text-main);
     overflow-x: hidden;
+    /* Evita scroll orizzontale indesiderato */
 }
-
 
 a {
     text-decoration: none;
@@ -132,10 +130,9 @@ ul {
     list-style: none;
 }
 
-
 /* =========================================
-   2. HEADER & NAVBAR
-   ========================================= */
+   2. HEADER & NAVBAR
+   ========================================= */
 #main-header {
     position: fixed;
     top: 0;
@@ -153,7 +150,8 @@ ul {
 .logo-combo {
     display: flex;
     align-items: center;
-    gap: 8px; /* puoi mettere anche 4px per meno spazio tra logo e scritta */
+    gap: 8px;
+    /* puoi mettere anche 4px per meno spazio tra logo e scritta */
 }
 
 .logo-header {
@@ -176,12 +174,15 @@ ul {
     margin-left: 0;
 }
 
-.logo span { color: white; }
+.logo span {
+    color: white;
+}
 
 .hamburger-menu {
     display: flex;
     align-items: center;
-    margin-left: auto; /* si assicura sia tutto a destra */
+    margin-left: auto;
+    /* si assicura sia tutto a destra */
 }
 
 
@@ -190,6 +191,10 @@ ul {
     gap: 30px;
 }
 
+.nav-menu ul {
+    display: flex;
+    gap: 30px;
+}
 
 .nav-menu a {
     font-weight: 700;
@@ -198,13 +203,10 @@ ul {
     transition: 0.3s;
 }
 
-
-.nav-menu a:hover,
-.nav-menu .active-link {
+.nav-menu a:hover {
     color: var(--primary);
     text-shadow: 0 0 10px var(--primary);
 }
-
 
 .btn-nav {
     background: var(--gradient);
@@ -218,7 +220,7 @@ ul {
 .hamburger-menu {
     display: none;
     cursor: pointer;
-    
+
 }
 
 .hamburger-menu i {
@@ -230,6 +232,19 @@ ul {
 
 
 
+/* Hamburger menu (Nascosto su PC) */
+.hamburger-menu {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.bar {
+    width: 30px;
+    height: 3px;
+    background: white;
+}
 
 /* =========================================
    3. HERO SECTION
@@ -239,7 +254,8 @@ ul {
     background-image: url('https://source.unsplash.com/random/1920x1080/?club,party,dark');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* Effetto Parallax */
+    background-attachment: fixed;
+    /* Effetto Parallax */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -257,30 +273,10 @@ ul {
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), var(--bg-color));
 }
 
-@media (max-width: 768px) {
-    #contact-hero {
-        min-height: 40vh;
-        padding: 40px 0 20px 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-    }
-    .hero-content {
-        width: 100%;
-        max-width: 95vw;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 40px 10px 30px 10px;
-        background: none;
-    }
-   
+.hero-content {
+    z-index: 2;
+    padding: 0 20px;
 }
-
-.hero-content { z-index: 2; padding: 0 20px; }
 
 #hero h1 {
     font-family: var(--font-title);
@@ -288,10 +284,14 @@ ul {
     line-height: 1;
     margin-bottom: 20px;
     color: white;
-    text-shadow: 0 0 20px rgba(255,255,255,0.5);
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
 }
 
-#hero p { font-size: 1.2rem; margin-bottom: 40px; color: #ddd; }
+#hero p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    color: #ddd;
+}
 
 .cta-button {
     padding: 15px 40px;
@@ -299,7 +299,7 @@ ul {
     font-weight: bold;
     color: white;
     border: 2px solid var(--primary);
-    background: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.5);
     text-transform: uppercase;
     letter-spacing: 2px;
     transition: 0.4s;
@@ -341,8 +341,10 @@ ul {
    ========================================= */
 .carousel-wrapper {
     width: 100%;
-    overflow: hidden; /* Nasconde ciò che esce */
-    white-space: nowrap; /* Mette gli elementi in riga */
+    overflow: hidden;
+    /* Nasconde ciò che esce */
+    white-space: nowrap;
+    /* Mette gli elementi in riga */
     padding: 20px 0;
     position: relative;
 }
@@ -356,11 +358,12 @@ ul {
     position: relative;
     border: 2px solid #333;
     transition: transform 0.3s ease, border-color 0.3s ease;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 }
 
 .slide-box:hover {
-    transform: scale(1.05); /* Zoom Hover */
+    transform: scale(1.05);
+    /* Zoom Hover */
     border-color: var(--primary);
     box-shadow: var(--shadow-glow);
     z-index: 10;
@@ -374,27 +377,33 @@ ul {
 
 /* --- VIDEO BOX (Verticali - TikTok Style) --- */
 .video-box {
-    width: 280px;   /* Larghezza fissa */
-    height: 500px;  /* Altezza fissa verticale */
+    width: 280px;
+    /* Larghezza fissa */
+    height: 500px;
+    /* Altezza fissa verticale */
     background: #000;
 }
 
 /* Immagini e Video dentro i box */
-.slide-box img, .slide-box video {
+.slide-box img,
+.slide-box video {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Riempie il box senza deformarsi */
+    object-fit: cover;
+    /* Riempie il box senza deformarsi */
     display: block;
 }
 
 /* Icona play sopra i video */
 .video-overlay {
     position: absolute;
-    top: 50%; left: 50%;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
     font-size: 3rem;
-    color: rgba(255,255,255,0.7);
-    pointer-events: none; /* Permette di cliccare attraverso */
+    color: rgba(255, 255, 255, 0.7);
+    pointer-events: none;
+    /* Permette di cliccare attraverso */
 }
 
 /* =========================================
@@ -420,19 +429,47 @@ ul {
 .staff-card:hover {
     transform: translateY(-10px);
     border-color: var(--secondary);
-     box-shadow: 0 10px 30px rgba(255, 60, 0, 0.5);
+    box-shadow: 0 10px 30px rgba(255, 60, 0, 0.5);
 }
 
 
-.card-img { height: 350px; width: 100%; overflow: hidden; }
-.card-img img { transition: 0.5s; }
-.staff-card:hover .card-img img { transform: scale(1.1); filter: grayscale(0%); }
+.card-img {
+    height: 350px;
+    width: 100%;
+    overflow: hidden;
+}
 
-.card-img img { filter: grayscale(100%); } /* Foto in bianco e nero di base */
+.card-img img {
+    transition: 0.5s;
+}
 
-.card-info { padding: 20px; text-align: center; }
-.card-info h3 { color: var(--primary); font-family: var(--font-title); font-size: 1.5rem; }
-.card-info p { color: #888; font-size: 0.9rem; margin-top: 5px; }
+.staff-card:hover .card-img img {
+    transform: scale(1.1);
+    filter: grayscale(0%);
+}
+
+.card-img img {
+    filter: grayscale(100%);
+}
+
+/* Foto in bianco e nero di base */
+
+.card-info {
+    padding: 20px;
+    text-align: center;
+}
+
+.card-info h3 {
+    color: var(--primary);
+    font-family: var(--font-title);
+    font-size: 1.5rem;
+}
+
+.card-info p {
+    color: #888;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
 
 /* =========================================
    7. CTA TICKETS & FOOTER
@@ -442,10 +479,15 @@ ul {
     color: black;
     padding: 100px 20px;
     text-align: center;
-    clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%); /* Taglio obliquo figo */
+    clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
+    /* Taglio obliquo figo */
 }
 
-.cta-section h2 { font-size: 4rem; font-family: var(--font-title); margin-bottom: 20px; }
+.cta-section h2 {
+    font-size: 4rem;
+    font-family: var(--font-title);
+    margin-bottom: 20px;
+}
 
 .mega-button {
     display: inline-block;
@@ -466,46 +508,97 @@ ul {
     transform: scale(1.1) rotate(-2deg);
 }
 
-footer { background: black; padding: 30px; text-align: center; color: #555; font-size: 0.8rem; }
+footer {
+    background: black;
+    padding: 30px;
+    text-align: center;
+    color: #555;
+    font-size: 0.8rem;
+}
 
 /* =========================================
    8. ANIMAZIONI & RESPONSIVE (MOBILE)
    ========================================= */
 /* Animazione Pulsazione */
 @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
-.pulse-anim { animation: pulse 2s infinite; }
+
+.pulse-anim {
+    animation: pulse 2s infinite;
+}
 
 /* Reveal allo scroll (Classe aggiunta da JS) */
-.reveal { opacity: 0; transform: translateY(50px); transition: 1s; }
-.reveal.active { opacity: 1; transform: translateY(0); }
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: 1s;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
 
 /* MEDIA QUERIES (ADATTAMENTO TELEFONO) */
 @media (max-width: 768px) {
-    #hero h1 { font-size: 3rem; }
-    
+    #hero h1 {
+        font-size: 3rem;
+    }
+
     /* Menu Mobile */
     .nav-menu {
         position: absolute;
-        top: 70px; left: 0; width: 100%;
+        top: 70px;
+        left: 0;
+        width: 100%;
         background: black;
         flex-direction: column;
         padding: 20px;
-        display: none; /* Nascosto di base */
+        display: none;
+        /* Nascosto di base */
         border-bottom: 2px solid var(--primary);
     }
-    .nav-menu.active { display: flex; }
-    .nav-menu ul { flex-direction: column; align-items: center; }
-    .hamburger-menu { display: flex; }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hamburger-menu {
+        display: flex;
+    }
 
     /* Adattamento Carousel Mobile */
-    .photo-box { width: 250px; height: 250px; }
-    .video-box { width: 200px; height: 350px; } /* Video più piccoli su mobile */
-    
-    .cta-section h2 { font-size: 2.5rem; }
+    .photo-box {
+        width: 250px;
+        height: 250px;
+    }
+
+    .video-box {
+        width: 200px;
+        height: 350px;
+    }
+
+    /* Video più piccoli su mobile */
+
+    .cta-section h2 {
+        font-size: 2.5rem;
+    }
 }
 
 
@@ -525,7 +618,8 @@ footer { background: black; padding: 30px; text-align: center; color: #555; font
 .video-card {
     position: relative;
     width: 100%;
-    aspect-ratio: 9 / 16; /* Formato verticale tipo smartphone */
+    aspect-ratio: 9 / 16;
+    /* Formato verticale tipo smartphone */
     background: #111;
     border-radius: 15px;
     overflow: hidden;
@@ -534,16 +628,17 @@ footer { background: black; padding: 30px; text-align: center; color: #555; font
 }
 
 /* =========================================
-   NUOVA SEZIONE: CONTEST DEL MESE STYLES
+   NUOVA SEZIONE: CONTEST DEL MESE STYLES (Base PC)
    ========================================= */
 #contest-del-mese {
-    padding: 80px 0;
+    /* Aggiungiamo un piccolo padding laterale anche per schermi grandi */
+    padding: 80px 20px;
     background: var(--bg-color);
 }
 
 .contest-box {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     align-items: center;
     max-width: 800px;
     margin: 0 auto;
@@ -551,12 +646,12 @@ footer { background: black; padding: 30px; text-align: center; color: #555; font
     background: var(--box-bg);
     border-radius: 20px;
     border: 3px solid var(--primary);
-    box-shadow: 0 0 40px rgba(255, 60, 0, 0.7); 
+    box-shadow: 0 0 40px rgba(255, 60, 0, 0.7);
 }
 
 .contest-poster {
     width: 100%;
-    max-width: 400px; 
+    max-width: 400px;
     height: auto;
     border-radius: 10px;
     margin-bottom: 20px;
@@ -629,27 +724,87 @@ footer { background: black; padding: 30px; text-align: center; color: #555; font
     box-shadow: 0 0 30px var(--primary);
 }
 
+
+/* =========================================
+   MEDIA QUERY: STILI SOLO PER SCHERMI PICCOLI (Mobile)
+   ========================================= */
+@media (max-width: 768px) {
+    .contest-box {
+        padding: 20px 10px;
+    }
+
+    .contest-poster {
+        max-width: 300px;
+        border: 3px solid white;
+    }
+
+    .contest-info h3 {
+        font-size: 2.2rem;
+    }
+
+    .data-contest {
+        font-size: 1.2rem;
+    }
+
+    .dettagli-contest {
+        font-size: 1rem;
+    }
+
+    .cta-contest {
+        padding: 12px 25px;
+        margin-top: 20px;
+    }
+}
+
+/* Animazione pulse per la scritta SOLD OUT */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
 /* Adattamento Responsive per la sezione Contest */
 @media (min-width: 600px) {
     .contest-box {
-        flex-direction: row; 
+        flex-direction: row;
         gap: 30px;
         text-align: left;
     }
+
     .contest-info {
         text-align: left;
         display: flex;
         flex-direction: column;
         justify-content: center;
     }
+
     .contest-poster {
         margin-bottom: 0;
     }
 }
 
-.video-card:hover { border-color: var(--primary); box-shadow: 0 0 20px rgba(255, 60, 0, 0.4); }
+.video-card:hover {
+    border-color: var(--primary);
+    box-shadow: 0 0 20px rgba(255, 60, 0, 0.4);
+}
 
-.video-card video { width: 100%; height: 100%; object-fit: cover; }
+.video-card video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
 footer {
     background: var(--box-bg);
@@ -663,6 +818,7 @@ footer p {
     color: var(--text-dim);
     font-size: 0.9rem;
 }
+
 .footer-social {
     background: var(--box-bg, #111);
     padding: 36px 0 18px 0;
@@ -713,6 +869,7 @@ footer p {
     color: #000;
     position: relative;
 }
+
 .tt-link i::before {
     /* TikTok 'd' parte celeste-rosa tramite drop-shadow */
     filter: drop-shadow(2px 2px 0 #25F4EE) drop-shadow(-2px -2px 0 #FE2C55);

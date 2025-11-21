@@ -337,6 +337,76 @@ ul {
 }
 
 /* =========================================
+   NUOVA SEZIONE: CHI SIAMO (Stile Contest)
+   ========================================= */
+#chi-siamo-sezione {
+    padding: 80px 20px;
+    background: var(--bg-color);
+}
+
+.chi-siamo-box {
+    /* Stile base del contest-box */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px; 
+    background: var(--box-bg);
+    border-radius: 20px;
+    border: 3px solid var(--primary);
+    box-shadow: 0 0 40px rgba(255, 60, 0, 0.7);
+    text-align: center;
+}
+
+.chi-siamo-icon {
+    /* Icona Team/Gestione */
+    font-size: 5rem;
+    color: var(--secondary); 
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px var(--secondary);
+}
+
+.chi-siamo-content h3 {
+    font-family: var(--font-title);
+    font-size: 2.5rem;
+    color: var(--primary); 
+    margin-bottom: 15px;
+}
+
+.chi-siamo-content p {
+    font-size: 1.1rem;
+    color: var(--text-dim);
+    margin-bottom: 30px;
+    line-height: 1.6;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+/* Riusiamo lo stile del pulsante contest */
+.chi-siamo-box .cta-contest {
+    margin-top: 0; 
+}
+
+/* Stili responsive per mobile */
+@media (max-width: 768px) {
+    .chi-siamo-box {
+        padding: 20px 10px;
+    }
+    .chi-siamo-content h3 {
+        font-size: 2rem;
+    }
+    .chi-siamo-icon {
+        font-size: 4rem;
+    }
+    .chi-siamo-content p {
+        font-size: 1rem;
+    }
+}
+
+/* =========================================
    5. CAROUSEL (FOTO & VIDEO) - LOGICA FLUIDA
    ========================================= */
 .carousel-wrapper {

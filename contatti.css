@@ -22,8 +22,8 @@
     --gradient: linear-gradient(45deg, var(--primary), var(--secondary));
     --shadow-glow: 0 0 20px rgba(255, 60, 0, 0.4);
 
-    --font-title: "Oswald", sans-serif;
-    --font-body: "Montserrat", sans-serif;
+     --font-title: 'Teko', sans-serif;   /* Nuovo font titoli */
+    --font-body: 'Inter', sans-serif;   /* Nuovo font corpo */
 }
 
 
@@ -87,7 +87,7 @@ ul {
 
 .logo {
     font-family: var(--font-title);
-    font-size: 2rem;
+    font-size: 1.2rem;
     font-weight: 700;
     color: var(--primary);
     text-transform: uppercase;

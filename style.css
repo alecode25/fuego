@@ -101,10 +101,10 @@
     /* Giallo/Arancio */
     --text-main: #ffffff;
     --text-dim: #b3b3b3;
-    --gradient: linear-gradient(45deg, var(--primary), var(--secondary));
-    --shadow-glow: 0 0 20px rgba(255, 60, 0, 0.4);
-    --font-title: 'Oswald', sans-serif;
-    --font-body: 'Montserrat', sans-serif;
+    --gradient: linear-gradient(75deg, var(--primary), var(--secondary));
+    --shadow-glow: 0 0 30px rgba(255, 60, 0, 0.4);
+     --font-title: 'Teko', sans-serif;   /* Nuovo font titoli */
+    --font-body: 'Inter', sans-serif;   /* Nuovo font corpo */
 }
 
 * {
@@ -249,19 +249,26 @@ ul {
 /* =========================================
    3. HERO SECTION
    ========================================= */
+/* =========================================
+   3. HERO SECTION (Aggiornato per adattamento)
+   ========================================== */
 #hero {
     height: 100vh;
-    background-image: url('https://source.unsplash.com/random/1920x1080/?club,party,dark');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    /* Effetto Parallax */
+
+    /* Inserisci qui il nome del tuo file immagine */
+    background-image: url('GPP01731\(1\).jpg');
+    background-size: cover;      /* L'immagine copre tutta l'area */
+    background-position: center; /* L'immagine resta centrata */
+
+    /* background-attachment: scroll; è già il default, quindi puoi anche ometterlo */
+    
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     position: relative;
 }
+
 
 /* Overlay scuro per leggere il testo */
 .overlay {

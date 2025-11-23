@@ -1,12 +1,219 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Document</title>
+    <title>FUEGO | Rimini Nightlife</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Oswald:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
+    <header id="main-header">
+        <div class="logo-combo">
+            <img src="logo.png" class="logo-header" alt="FUEGO Rimini Logo">
+            <div class="logo">FUEGO <span>RIMINI</span></div>
+        </div>
+        <div class="hamburger-menu"><i class="fas fa-bars"></i></div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="#foto-gallery">Foto</a></li>
+                <li><a href="#video-wall">Video</a></li>
+                <li><a href="#eventi-mese">Eventi</a></li>
+                <li><a href="#staff">Staff</a></li>
+                <li><a href="#contest-del-mese">Contest</a></li>
+                <li><a href="contatti.html">Contatti</a></li>
+                <li><a href="#chi-siamo-sezione">Chi Siamo</a></li>
+                <li><a href="#tickets" class="btn-nav">Prevendita</a></li>
+
+            
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <div class="overlay"></div>
+        <div class="hero-content">
+            <h1>RIMINI IS FIRE</h1>
+            <p>Le notti più calde della Riviera Romagnola.</p>
+            <a href="#tickets" class="cta-button">ENTRA IN LISTA</a>
+        </div>
+    </section>
+
+    <section id="foto-gallery" class="sezione-dark">
+        <h2 class="section-title">GALLERIA FOTO</h2>
+
+        <div class="carousel-wrapper carousel-foto">
+
+            <div class="slide-box photo-box">
+                <img src="foto2.jpeg" alt="Fuego Event">
+            </div>
+            <div class="slide-box photo-box">
+                <img src="foto3.jpeg" alt="Fuego Event">
+            </div>
+          <div class="slide-box photo-box">
+                <img src="foto9.jpeg" alt="Fuego Event">
+            </div>
+            <div class="slide-box photo-box">
+                <img src="foto4.jpeg" alt="Fuego Event">
+            </div>
+            <div class="slide-box photo-box">
+                <img src="foto5.jpeg" alt="Fuego Event">
+            </div>
+            <div class="slide-box photo-box">
+                <img src="foto8.jpeg" alt="Fuego Event">
+            </div>
+        </div>
+    </section>
+
+    <section id="video-wall" class="sezione-dark">
+        <h2 class="section-title">LIVE REELS</h2>
+        <p class="subtitle">Clicca sui video per attivare l'audio.</p>
+
+        <div class="video-grid">
+
+            <div class="video-card">
+                <video
+                    src="SaveGram.App_AQMhJT9yuytOn7n3HNbKA28DrUa4wcLPdqpE4X-L_BtagEZbuLtd4Ky53LBDG3mgwB2SK1zRKidJVOp2K4_QXJ7SdC-77vTTSTizokc.mp4"
+                    loop muted playsinline></video>
+                <div class="play-icon"><i class="fas fa-play"></i></div>
+            </div>
+
+            <div class="video-card">
+                <video
+                    src="SaveGram.App_AQPZMYrxggOKY_60m-xUUwSeoefdWXxlEPvwKjwhbF0Vmzh1q3nh8ogWVm32rbTI24jdX_PGSqv9q-hmRT8XRWZkCtk9hQKDZSqzVds.mp4"
+                    loop muted playsinline></video>
+                <div class="play-icon"><i class="fas fa-play"></i></div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="eventi-mese" class="sezione-dark">
+        <h2 class="section-title">EVENTI DEL MESE</h2>
+        <p class="subtitle">Scopri i prossimi appuntamenti e prenota il tuo ingresso.</p>
+
+        <div class="event-grid">
+
+            
+            
+            <a href="https://www.ticketsms.it/event/Capodanno-Il-Pagante-Rimini-Altromondo-Studios-31-12-2025" target="_blank" target="_blank" class="event-card">
+                <img src="esempio.jpg" alt="Nome Evento">
+                <div class="event-info">
+                    <h3>Pagante</h3>
+                    <p>31 Dicembre</p>
+                    <span class="event-tag">Acquista Ora</span>
+                </div>
+                
+           
+            </a>
+
+            
+            <a href="https://www.ticketsms.it/event/Christmas-W-Artie-Five-2312-Baia-Imperiale-Gabicce-Mare-Baia-Imperiale-23-12-2025" class="event-card">
+                <img src="arti.jpg" alt="Nome Evento">
+                <div class="event-info">
+                    <h3>Artie-Five</h3>
+                    <p>mercoledì 23 Dicembre</p>
+                    <span class="event-tag">Acquista Ora</span>
+                </div>
+            </a>
+
+            <a href="https://www.ticketsms.it/event/Repeat-Flaco-G-Misano-Adriatico-Peter-Pan-Club-07-12-2025" target="_blank" class="event-card">
+                <img src="flaco.jpg" alt="Nome Evento">
+                <div class="event-info">
+                    <h3>CLOSING ESTIVO</h3>
+                    <p>Sabato 2 Novembre</p>
+                    <span class="event-tag">Acquista Ora</span>
+                </div>
+            </a>
+
+        </div>
+    
+
+    
+    <section id="contest-del-mese" class="sezione-dark">
+    
+<section id="contest-del-mese" class="sezione-dark">
+    <h2 class="section-title">CONTEST DEL MESE</h2>
+    
+    <div class="contest-box">
+        <img src="foto.contest.jpg" alt="FUEGO Contest Party - 70% Sold Out" class="contest-poster">
+        
+        <div class="contest-info">
+            <h3>CONTEST PARTY</h3>
+            <p class="data-contest">SABATO 22 NOVEMBRE</p>
+            <p class="dettagli-contest">Dalle 22:30 till late night</p>
+            <p class="sold-out">70% SOLD OUT</p>
+            <div class="info-line">
+                <i class="fas fa-phone-alt"></i> INFOLINE: +39 392 001 1251
+            </div>
+            <div class="info-line">
+                <i class="fab fa-instagram"></i> Veniteaci a trovare su instagram:<strong> @fuego_official_events</strong>
+            </div>
+            <div class="info-line">
+                <i class="fas fa-map-marker-alt"></i> BLOW UP: VIALE REGINA ELENA, 209
+            </div>
+            <a href="#tickets" class="cta-contest">PRENOTA ORA! ULTIMI INGRESSI</a>
+        </div>
+    </section>
+    <section id="chi-siamo-sezione" class="sezione-dark">
+        <h2 class="section-title">CHI SIAMO</h2>
+
+        <div class="chi-siamo-box">
+            <i class="fas fa-users-cog chi-siamo-icon"></i>
+
+            <div class="chi-siamo-content">
+                
+                <p>
+                    FUEGO è l'anima infuocata della nightlife di Rimini. 
+                    Siamo un team di professionisti della movida, specializzati 
+                    nell'organizzare le serate Reggaeton, Hip Hop e Commerciale 
+                    più esplosive della Riviera.
+                    Il nostro obiettivo è creare atmosfere uniche, travolgenti 
+                    e sempre al limite. Se cerchi il vero divertimento e l'energia 
+                    della Romagna, sei nel posto giusto!
+                </p>
+                <a href="#eventi-mese" class="cta-contest">SCOPRI I PROSSIMI EVENTI</a>
+            </div>
+        </div>
+    </section>
+    
+    <section id="tickets" class="cta-section">
+        <div class="cta-diagonal-bg"></div>
+
+        
+        <h2 class="pulse-anim">PRENDI LA TUA PREVENDITA ORA!</h2>
+        <a href="https://www.ticketsms.it/" class="mega-button">ACQUISTA PREVENDITA</a>
+    </section>
+
+
+    <footer class="footer-social">
+        <div class="social-row">
+            <a href="https://www.instagram.com/fuego_official_events/" target="_blank" aria-label="Instagram"
+                class="ig-link">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.tiktok.com/@staff_fuego_?is_from_webapp=1&sender_device=pc" target="_blank"
+                aria-label="TikTok" class="tt-link">
+                <i class="fab fa-tiktok"></i>
+            </a>
+        </div>
+        <p>© 2025 FUEGO STAFF RIMINI</p>
+    </footer>
+
+
+
+
     <script src="script.js"></script>
 </body>
+
 </html>

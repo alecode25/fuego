@@ -1,0 +1,912 @@
+
+
+
+
+
+/* =========================================
+   NUOVA SEZIONE: EVENTI DEL MESE
+   ========================================= */
+#eventi-mese {
+    padding: 80px 0;
+    background: var(--bg-color);
+    box-shadow: 0 10px 30px rgba(255, 60, 0, 0.5);
+}
+
+.event-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 0 5%;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.event-card {
+    display: block;
+    background: var(--box-bg);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: 0.3s;
+    border: 1px solid #333;
+    position: relative;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+    box-shadow: 0 10px 30px rgba(255, 60, 0, 0.5);
+}
+
+.event-card img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    display: block;
+    transition: 0.5s;
+}
+
+.event-card:hover img {
+    transform: scale(1.05);
+}
+
+.event-info {
+    padding: 20px;
+}
+
+.event-info h3 {
+    font-family: var(--font-title);
+    font-size: 1.8rem;
+    color: var(--primary);
+    margin-bottom: 5px;
+}
+
+.event-info p {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.event-tag {
+    display: inline-block;
+    padding: 8px 20px;
+    background: var(--secondary);
+    color: black;
+    font-weight: bold;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+
+/* Adattamento Mobile specifico per la griglia eventi */
+@media (max-width: 768px) {
+    .event-grid {
+        /* Permette un layout a colonna singola su schermi molto piccoli */
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+
+
+/* =========================================
+   1. VARIABILI & SETUP (TEMA FUEGO)
+   ========================================= */
+:root {
+    --bg-color: #050505;
+    /* Nero Profondo */
+    --box-bg: #111111;
+    /* Grigio Scuro per le card */
+    --primary: #ff3c00;
+    /* Rosso Fuoco acceso */
+    --secondary: #ffaa00;
+    /* Giallo/Arancio */
+    --text-main: #ffffff;
+    --text-dim: #b3b3b3;
+    --gradient: linear-gradient(75deg, var(--primary), var(--secondary));
+    --shadow-glow: 0 0 30px rgba(255, 60, 0, 0.4);
+     --font-title: 'Teko', sans-serif;   /* Nuovo font titoli */
+    --font-body: 'Inter', sans-serif;   /* Nuovo font corpo */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    overflow-x: hidden;
+    /* Evita scroll orizzontale indesiderato */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+/* =========================================
+   2. HEADER & NAVBAR
+   ========================================= */
+#main-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 12px 3% 12px 3%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(5, 5, 5, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--primary);
+    z-index: 1000;
+}
+
+.logo-combo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    /* puoi mettere anche 4px per meno spazio tra logo e scritta */
+}
+
+.logo-header {
+    width: 54px;
+    height: 54px;
+    object-fit: contain;
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+
+.logo {
+    font-family: var(--font-title);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px var(--primary);
+    margin-left: 0;
+}
+
+.logo span {
+    color: white;
+}
+
+.hamburger-menu {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    /* si assicura sia tutto a destra */
+}
+
+
+.nav-menu ul {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-menu ul {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-menu a {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.nav-menu a:hover {
+    color: var(--primary);
+    text-shadow: 0 0 10px var(--primary);
+}
+
+.btn-nav {
+    background: var(--gradient);
+    padding: 8px 20px;
+    border-radius: 30px;
+    color: black !important;
+}
+
+
+/* Hamburger menu */
+.hamburger-menu {
+    display: none;
+    cursor: pointer;
+
+}
+
+.hamburger-menu i {
+    font-size: 1.5rem;
+    color: white;
+}
+
+
+
+
+
+/* Hamburger menu (Nascosto su PC) */
+.hamburger-menu {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.bar {
+    width: 30px;
+    height: 3px;
+    background: white;
+}
+
+/* =========================================
+   3. HERO SECTION
+   ========================================= */
+/* =========================================
+   3. HERO SECTION (Aggiornato per adattamento)
+   ========================================== */
+#hero {
+    height: 100vh;
+
+    /* Inserisci qui il nome del tuo file immagine */
+    background-image: url('GPP01731\(1\).jpg');
+    background-size: cover;      /* L'immagine copre tutta l'area */
+    background-position: center; /* L'immagine resta centrata */
+
+    /* background-attachment: scroll; è già il default, quindi puoi anche ometterlo */
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+
+
+/* Overlay scuro per leggere il testo */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), var(--bg-color));
+}
+
+.hero-content {
+    z-index: 2;
+    padding: 0 20px;
+}
+
+#hero h1 {
+    font-family: var(--font-title);
+    font-size: 5rem;
+    line-height: 1;
+    margin-bottom: 20px;
+    color: white;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+#hero p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    color: #ddd;
+}
+
+.cta-button {
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    border: 2px solid var(--primary);
+    background: rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.4s;
+    box-shadow: 0 0 15px var(--primary);
+}
+
+.cta-button:hover {
+    background: var(--primary);
+    color: black;
+    box-shadow: 0 0 40px var(--primary);
+    transform: scale(1.1);
+}
+
+/* =========================================
+   4. SEZIONI GENERALI & TITOLI
+   ========================================= */
+.sezione-dark {
+    padding: 80px 0;
+    background: var(--bg-color);
+}
+
+.section-title {
+    text-align: center;
+    font-family: var(--font-title);
+    font-size: 3rem;
+    color: white;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 0px var(--primary);
+}
+
+.subtitle {
+    text-align: center;
+    color: var(--text-dim);
+    margin-bottom: 50px;
+}
+
+/* =========================================
+   NUOVA SEZIONE: CHI SIAMO (Stile Contest)
+   ========================================= */
+#chi-siamo-sezione {
+    padding: 80px 20px;
+    background: var(--bg-color);
+}
+
+.chi-siamo-box {
+    /* Stile base del contest-box */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px; 
+    background: var(--box-bg);
+    border-radius: 20px;
+    border: 3px solid var(--primary);
+    box-shadow: 0 0 40px rgba(255, 60, 0, 0.7);
+    text-align: center;
+}
+
+.chi-siamo-icon {
+    /* Icona Team/Gestione */
+    font-size: 5rem;
+    color: var(--secondary); 
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px var(--secondary);
+}
+
+.chi-siamo-content h3 {
+    font-family: var(--font-title);
+    font-size: 2.5rem;
+    color: var(--primary); 
+    margin-bottom: 15px;
+}
+
+.chi-siamo-content p {
+    font-size: 1.1rem;
+    color: var(--text-dim);
+    margin-bottom: 30px;
+    line-height: 1.6;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+/* Riusiamo lo stile del pulsante contest */
+.chi-siamo-box .cta-contest {
+    margin-top: 0; 
+}
+
+/* Stili responsive per mobile */
+@media (max-width: 768px) {
+    .chi-siamo-box {
+        padding: 20px 10px;
+    }
+    .chi-siamo-content h3 {
+        font-size: 2rem;
+    }
+    .chi-siamo-icon {
+        font-size: 4rem;
+    }
+    .chi-siamo-content p {
+        font-size: 1rem;
+    }
+}
+
+/* =========================================
+   5. CAROUSEL (FOTO & VIDEO) - LOGICA FLUIDA
+   ========================================= */
+.carousel-wrapper {
+    width: 100%;
+    overflow: hidden;
+    /* Nasconde ciò che esce */
+    white-space: nowrap;
+    /* Mette gli elementi in riga */
+    padding: 20px 0;
+    position: relative;
+}
+
+/* Stile comune per i BOX (slide) */
+.slide-box {
+    display: inline-block;
+    margin-right: 20px;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    border: 2px solid #333;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.slide-box:hover {
+    transform: scale(1.05);
+    /* Zoom Hover */
+    border-color: var(--primary);
+    box-shadow: var(--shadow-glow);
+    z-index: 10;
+}
+
+/* --- FOTO BOX (Quadrati/Orizzontali) --- */
+.photo-box {
+    width: 355px;
+    height: 360px;
+}
+
+/* --- VIDEO BOX (Verticali - TikTok Style) --- */
+.video-box {
+    width: 280px;
+    /* Larghezza fissa */
+    height: 500px;
+    /* Altezza fissa verticale */
+    background: #000;
+}
+
+/* Immagini e Video dentro i box */
+.slide-box img,
+.slide-box video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Riempie il box senza deformarsi */
+    display: block;
+}
+
+/* Icona play sopra i video */
+.video-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    color: rgba(255, 255, 255, 0.7);
+    pointer-events: none;
+    /* Permette di cliccare attraverso */
+}
+
+
+
+.card-info {
+    padding: 20px;
+    text-align: center;
+}
+
+.card-info h3 {
+    color: var(--primary);
+    font-family: var(--font-title);
+    font-size: 1.5rem;
+}
+
+.card-info p {
+    color: #888;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+/* =========================================
+   7. CTA TICKETS & FOOTER
+   ========================================= */
+.cta-section {
+    background: var(--primary);
+    color: black;
+    padding: 100px 20px;
+    text-align: center;
+    clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
+    /* Taglio obliquo figo */
+}
+
+.cta-section h2 {
+    font-size: 4rem;
+    font-family: var(--font-title);
+    margin-bottom: 20px;
+}
+
+.mega-button {
+    display: inline-block;
+    background: black;
+    color: white;
+    padding: 20px 50px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: 50px;
+    margin-top: 30px;
+    transition: 0.3s;
+    border: 4px solid white;
+}
+
+.mega-button:hover {
+    background: white;
+    color: black;
+    transform: scale(1.1) rotate(-2deg);
+}
+
+footer {
+    background: black;
+    padding: 30px;
+    text-align: center;
+    color: #555;
+    font-size: 0.8rem;
+}
+
+/* =========================================
+   8. ANIMAZIONI & RESPONSIVE (MOBILE)
+   ========================================= */
+/* Animazione Pulsazione */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.pulse-anim {
+    animation: pulse 2s infinite;
+}
+
+/* Reveal allo scroll (Classe aggiunta da JS) */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: 1s;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* MEDIA QUERIES (ADATTAMENTO TELEFONO) */
+@media (max-width: 768px) {
+    #hero h1 {
+        font-size: 3rem;
+    }
+
+    /* Menu Mobile */
+    .nav-menu {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: black;
+        flex-direction: column;
+        padding: 20px;
+        display: none;
+        /* Nascosto di base */
+        border-bottom: 2px solid var(--primary);
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hamburger-menu {
+        display: flex;
+    }
+
+    /* Adattamento Carousel Mobile */
+    .photo-box {
+        width: 250px;
+        height: 250px;
+    }
+
+    .video-box {
+        width: 200px;
+        height: 350px;
+    }
+
+    /* Video più piccoli su mobile */
+
+    .cta-section h2 {
+        font-size: 2.5rem;
+    }
+}
+
+
+
+/* =========================================
+   2. VIDEO WALL (GRIGLIA STATICA) - MODIFICHE PER DESKTOP
+   ========================================= */
+.video-grid {
+    display: grid;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 2%;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.video-card {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    /* Formato verticale tipo smartphone */
+    background: #111;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 2px solid #333;
+    transition: 0.3s;
+}
+
+/* =========================================
+   NUOVA SEZIONE: CONTEST DEL MESE STYLES (Base PC)
+   ========================================= */
+#contest-del-mese {
+    /* Aggiungiamo un piccolo padding laterale anche per schermi grandi */
+    padding: 80px 20px;
+    background: var(--bg-color);
+}
+
+.contest-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: var(--box-bg);
+    border-radius: 20px;
+    border: 3px solid var(--primary);
+    box-shadow: 0 0 40px rgba(255, 60, 0, 0.7);
+}
+
+.contest-poster {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border: 5px solid white;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+.contest-info {
+    text-align: center;
+    color: white;
+    padding: 10px;
+}
+
+.contest-info h3 {
+    font-family: var(--font-title);
+    font-size: 3rem;
+    color: var(--secondary);
+    text-shadow: 0 0 10px var(--secondary);
+    margin-bottom: 10px;
+}
+
+.data-contest {
+    font-family: var(--font-title);
+    font-size: 1.5rem;
+    color: var(--primary);
+    margin-bottom: 5px;
+}
+
+.dettagli-contest {
+    font-size: 1.1rem;
+    color: var(--text-dim);
+    margin-bottom: 20px;
+}
+
+.sold-out {
+    font-size: 2rem;
+    color: #ff0000;
+    font-weight: 900;
+    margin: 15px 0;
+    animation: pulse 1.5s infinite;
+}
+
+.info-line {
+    font-size: 1rem;
+    margin: 8px 0;
+    color: var(--text-dim);
+}
+
+.info-line i {
+    color: var(--primary);
+    margin-right: 10px;
+}
+
+.cta-contest {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 15px 30px;
+    background: var(--gradient);
+    color: black;
+    font-weight: bold;
+    border-radius: 30px;
+    text-transform: uppercase;
+    transition: 0.3s;
+    box-shadow: 0 5px 20px rgba(255, 170, 0, 0.5);
+}
+
+.cta-contest:hover {
+    transform: scale(1.05);
+    background: white;
+    box-shadow: 0 0 30px var(--primary);
+}
+
+
+/* =========================================
+   MEDIA QUERY: STILI SOLO PER SCHERMI PICCOLI (Mobile)
+   ========================================= */
+@media (max-width: 768px) {
+    .contest-box {
+        padding: 20px 10px;
+    }
+
+    .contest-poster {
+        max-width: 300px;
+        border: 3px solid white;
+    }
+
+    .contest-info h3 {
+        font-size: 2.2rem;
+    }
+
+    .data-contest {
+        font-size: 1.2rem;
+    }
+
+    .dettagli-contest {
+        font-size: 1rem;
+    }
+
+    .cta-contest {
+        padding: 12px 25px;
+        margin-top: 20px;
+    }
+}
+
+/* Animazione pulse per la scritta SOLD OUT */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+/* Adattamento Responsive per la sezione Contest */
+@media (min-width: 600px) {
+    .contest-box {
+        flex-direction: row;
+        gap: 30px;
+        text-align: left;
+    }
+
+    .contest-info {
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .contest-poster {
+        margin-bottom: 0;
+    }
+}
+
+.video-card:hover {
+    border-color: var(--primary);
+    box-shadow: 0 0 20px rgba(255, 60, 0, 0.4);
+}
+
+.video-card video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+footer {
+    background: var(--box-bg);
+    padding: 30px;
+    text-align: center;
+    border-top: 2px solid var(--primary);
+}
+
+
+footer p {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+}
+
+.footer-social {
+    background: var(--box-bg, #111);
+    padding: 36px 0 18px 0;
+    text-align: center;
+    border-top: 2px solid var(--primary, #ff3c00);
+}
+
+.social-row {
+    margin-bottom: 20px;
+}
+
+.footer-social {
+    background: var(--box-bg, #111);
+    padding: 36px 0 18px 0;
+    text-align: center;
+    border-top: 2px solid var(--primary, #ff3c00);
+}
+
+.social-row {
+    margin-bottom: 20px;
+}
+
+.footer-social a {
+    display: inline-block;
+    margin: 0 18px;
+    font-size: 2.6rem;
+    transition: transform 0.17s;
+    vertical-align: middle;
+}
+
+.footer-social p {
+    color: var(--text-dim, #b3b3b3);
+    font-size: 0.95rem;
+    margin-top: 12px;
+    letter-spacing: 1px;
+}
+
+/* Colori originali social */
+.ig-link i {
+    background: radial-gradient(circle farthest-corner at 35% 90%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+
+.tt-link i {
+    color: #000;
+    position: relative;
+}
+
+.tt-link i::before {
+    /* TikTok 'd' parte celeste-rosa tramite drop-shadow */
+    filter: drop-shadow(2px 2px 0 #25F4EE) drop-shadow(-2px -2px 0 #FE2C55);
+}

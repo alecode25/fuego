@@ -2,7 +2,105 @@
    contatti.css - STILE SPECIFICO PER PAGINA CONTATTI
    ========================================= */
 
+/* =========================================
+   NUOVA SEZIONE: RECRUITING STAFF
+   ========================================= */
 
+#join-staff {
+    padding: 80px 20px;
+}
+
+.join-box {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px;
+    background: var(--box-bg);
+    border-radius: 15px;
+    border: 3px solid var(--secondary);
+    box-shadow: 0 0 40px rgba(255, 170, 0, 0.5); /* Effetto "luce calda" */
+    text-align: center;
+}
+
+.join-box .section-title {
+    color: var(--secondary); /* Titolo giallo/arancio in evidenza */
+    text-shadow: 2px 2px 0px var(--primary);
+    margin-bottom: 5px;
+}
+
+.join-box .subtitle {
+    font-size: 1.1rem;
+    color: var(--text-main);
+    margin-bottom: 30px;
+}
+
+.staff-rols {
+    margin-bottom: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.rol-tag {
+    background: var(--primary); /* Sfondo rosso fuoco */
+    color: black;
+    padding: 8px 15px;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    box-shadow: 0 0 10px rgba(255, 60, 0, 0.7);
+}
+
+.rol-tag i {
+    margin-right: 5px;
+}
+
+.join-call {
+    font-size: 1.2rem;
+    color: white;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.cta-staff-button {
+    display: inline-block;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    border: 2px solid white;
+    background: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.4s;
+    box-shadow: 0 0 15px var(--primary);
+}
+
+.cta-staff-button:hover {
+    background: black;
+    color: var(--primary);
+    border-color: var(--primary);
+    box-shadow: 0 0 30px var(--primary);
+    transform: scale(1.05);
+}
+
+/* Adattamento Mobile */
+@media (max-width: 768px) {
+    .join-box {
+        padding: 30px 15px;
+    }
+    .join-box .section-title {
+        font-size: 2rem;
+    }
+    .rol-tag {
+        font-size: 0.8rem;
+    }
+    .cta-staff-button {
+        padding: 12px 30px;
+        font-size: 1rem;
+    }
+}
 /* =========================================
    1. VARIABILI & SETUP (TEMA FUEGO)
    ========================================= */

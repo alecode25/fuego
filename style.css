@@ -488,53 +488,7 @@ ul {
     /* Permette di cliccare attraverso */
 }
 
-/* =========================================
-   6. STAFF GRID (TEAM)
-   ========================================= */
-.staff-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    padding: 0 5%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
 
-.staff-card {
-    background: var(--box-bg);
-    border-radius: 15px;
-    overflow: hidden;
-    transition: 0.3s;
-    border: 1px solid #333;
-}
-
-.staff-card:hover {
-    transform: translateY(-10px);
-    border-color: var(--secondary);
-    box-shadow: 0 10px 30px rgba(255, 60, 0, 0.5);
-}
-
-
-.card-img {
-    height: 350px;
-    width: 100%;
-    overflow: hidden;
-}
-
-.card-img img {
-    transition: 0.5s;
-}
-
-.staff-card:hover .card-img img {
-    transform: scale(1.1);
-    filter: grayscale(0%);
-}
-
-.card-img img {
-    filter: grayscale(100%);
-}
-
-/* Foto in bianco e nero di base */
 
 .card-info {
     padding: 20px;

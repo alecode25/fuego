@@ -59,7 +59,66 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+document.addEventListener('DOMContentLoaded', () => {
+    const videoCards = document.querySelectorAll('.video-card');
 
+    videoCards.forEach(card => {
+        const video = card.querySelector('video');
+        const playIcon = card.querySelector('.play-icon i');
+        
+        // 1. Forza l'autoplay silenziato su tutti i video
+        video.muted = true;
+        // La classe 'muted' aiuta a gestire lo stile CSS se necessario
+        card.classList.add('muted'); 
+
+        // Tentativo di autoplay subito dopo che la pagina è pronta
+        // Questo è il codice cruciale che bypassa la pausa iniziale (dove possibile)
+        video.play().then(() => {
+            // Se l'autoplay riesce, rimuoviamo l'icona Play e aggiungiamo l'icona Mute
+            card.classList.add('active'); // La classe 'active' nasconde l'icona Play
+            playIcon.className = 'fas fa-volume-off'; 
+
+            // Se l'autoplay fallisce (es. su iOS non parte), il video resta in pausa
+            // e l'icona Play rimane visibile per l'interazione manuale.
+        }).catch(error => {
+            // Se l'autoplay fallisce, assicuriamoci che il video sia in pausa 
+            // e l'icona Play sia ben visibile per spingere l'utente a cliccare.
+            video.pause();
+            playIcon.className = 'fas fa-play'; 
+            card.classList.remove('active'); // Icona Play visibile
+            console.log("Autoplay bloccato. Richiesta interazione utente.");
+        });
+
+        // 2. Listener per il Click (Gestione Audio e Autoplay Fallito)
+        card.addEventListener('click', () => {
+            if (video.paused) {
+                // Se il video è in pausa (Autoplay fallito, primo click)
+                video.play();
+                // Lo lasciamo muto e mostriamo l'icona del volume (muted)
+                playIcon.className = 'fas fa-volume-off'; 
+                card.classList.add('active', 'muted');
+                
+            } else {
+                // Se il video è in riproduzione (Autoplay riuscito o click precedente)
+                video.muted = !video.muted;
+
+                if (video.muted) {
+                    playIcon.className = 'fas fa-volume-off';
+                    card.classList.add('muted');
+                } else {
+                    playIcon.className = 'fas fa-volume-up';
+                    card.classList.remove('muted');
+                }
+                
+                // Mostra temporaneamente l'icona di mute/unmute
+                card.classList.remove('active');
+                setTimeout(() => {
+                    card.classList.add('active');
+                }, 1500); // Rimuove l'icona dopo 1.5 secondi
+            }
+        });
+    });
+});
     // 3. MENU MOBILE COMPLETO
     // ------------------------
     const menuBtn = document.querySelector('.hamburger-menu');

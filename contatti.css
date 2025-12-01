@@ -161,10 +161,39 @@ ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background: transparent;
+    backdrop-filter: none;
+    border-bottom: 1px solid transparent;
+    z-index: 1000;
+    transition: background 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                backdrop-filter 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                border-bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(0);
+}
+
+/* Header con sfondo quando scrolli */
+#main-header.scrolled {
     background: rgba(5, 5, 5, 0.85);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--primary);
-    z-index: 1000;
+}
+
+/* Header nascosto quando scrolli in basso */
+#main-header.hidden {
+    transform: translateY(-100%);
+}
+
+/* Header visibile quando scrolli in su */
+#main-header.visible {
+    transform: translateY(0);
+}
+
+/* Header più opaco quando il menu mobile è aperto */
+#main-header.menu-open {
+    background: rgba(5, 5, 5, 0.95) !important;
+    backdrop-filter: blur(15px) !important;
+    border-bottom: 1px solid var(--primary) !important;
 }
 
 .logo-combo {
@@ -209,7 +238,8 @@ ul {
     font-weight: 700;
     text-transform: uppercase;
     font-size: 0.9rem;
-    transition: 0.3s;
+    transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                text-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 
@@ -237,6 +267,8 @@ ul {
 .hamburger-menu i {
     font-size: 1.5rem;
     color: white;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 
@@ -595,22 +627,77 @@ footer p {
         top: 70px;
         left: 0;
         width: 100%;
-        background: black;
+        background: rgba(5, 5, 5, 0.95);
+        backdrop-filter: blur(15px);
         flex-direction: column;
         padding: 20px;
-        display: none;
+        display: flex;
         /* Nascosto di base */
+        border-top: 2px solid var(--primary);
         border-bottom: 2px solid var(--primary);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+        opacity: 0;
+        transform: translateY(-20px) scale(0.95);
+        pointer-events: none;
+        transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                    max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        max-height: 0;
+        overflow: hidden;
     }
 
     .nav-menu.active {
-        display: flex;
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        pointer-events: auto;
+        max-height: 100vh;
+        transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                    max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Animazione di chiusura più veloce e con effetto diverso */
+    .nav-menu:not(.active) {
+        transition: opacity 0.25s cubic-bezier(0.55, 0.055, 0.675, 0.19),
+                    transform 0.25s cubic-bezier(0.55, 0.055, 0.675, 0.19),
+                    max-height 0.25s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+        transform: translateY(10px) scale(0.98);
     }
 
     .nav-menu ul {
         flex-direction: column;
         align-items: center;
         gap: 25px;
+    }
+
+    .nav-menu ul li {
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .nav-menu.active ul li {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .nav-menu.active ul li:nth-child(1) { transition-delay: 0.05s; }
+    .nav-menu.active ul li:nth-child(2) { transition-delay: 0.1s; }
+    .nav-menu.active ul li:nth-child(3) { transition-delay: 0.15s; }
+    .nav-menu.active ul li:nth-child(4) { transition-delay: 0.2s; }
+    .nav-menu.active ul li:nth-child(5) { transition-delay: 0.25s; }
+    .nav-menu.active ul li:nth-child(6) { transition-delay: 0.3s; }
+    .nav-menu.active ul li:nth-child(7) { transition-delay: 0.35s; }
+    .nav-menu.active ul li:nth-child(8) { transition-delay: 0.4s; }
+
+    /* Animazione più veloce per i link quando il menu si chiude */
+    .nav-menu:not(.active) ul li {
+        opacity: 0;
+        transform: translateY(5px);
+        transition: opacity 0.2s cubic-bezier(0.55, 0.055, 0.675, 0.19),
+                    transform 0.2s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+        transition-delay: 0s !important;
     }
 
     .hamburger-menu {
@@ -622,6 +709,8 @@ footer p {
     .hamburger-menu i {
         font-size: 1.8rem;
         color: white;
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                    color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     /* Logo più piccolo su mobile */

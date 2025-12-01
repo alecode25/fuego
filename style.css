@@ -13,70 +13,197 @@
 }
 
 .event-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+    display: flex;
+    gap: 50px;
     padding: 0 5%;
-    max-width: 1300px;
+    max-width: 100%;
     margin: 0 auto;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary) transparent;
+}
+
+.event-grid::-webkit-scrollbar {
+    height: 8px;
+}
+
+.event-grid::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.event-grid::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 4px;
 }
 
 .event-card {
     display: block;
-    background: var(--box-bg);
-    border-radius: 15px;
+    background: #000;
+    border-radius: 20px;
     overflow: hidden;
     transition: 0.3s;
-    border: 1px solid #333;
     position: relative;
-    text-align: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    min-width: calc(100vw - 10%);
+    max-width: calc(100vw - 10%);
+    width: calc(100vw - 10%);
+    flex-shrink: 0;
+    scroll-snap-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
 }
 
 .event-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--primary);
-    box-shadow: 0 10px 30px rgba(255, 60, 0, 0.5);
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(255, 60, 0, 0.4);
+}
+
+/* Sezione superiore con grafica divisa */
+.event-card-top {
+    position: relative;
+    height: 280px;
+    display: flex;
+    overflow: hidden;
+}
+
+.event-card-graphic-left {
+    flex: 1;
+    background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 20px;
+    color: #ff3c00;
+    font-weight: 800;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-right: 2px solid #ff3c00;
+}
+
+.event-card-graphic-right {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
 }
 
 .event-card img {
     width: 100%;
-    height: 400px;
+    height: 100%;
     object-fit: cover;
     display: block;
-    transition: 0.5s;
 }
 
-.event-card:hover img {
-    transform: scale(1.05);
+.event-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #ff0000;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    z-index: 10;
 }
 
+/* Sezione inferiore con info evento */
 .event-info {
-    padding: 20px;
+    padding: 25px;
+    background: #000;
+    color: white;
 }
 
 .event-info h3 {
-    font-family: var(--font-title);
+    font-family: 'Poppins', sans-serif;
     font-size: 1.8rem;
-    color: var(--primary);
-    margin-bottom: 5px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-.event-info p {
-    color: var(--text-dim);
+.event-info .event-date {
+    color: #ff3c00;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.event-info .event-location {
+    color: #fff;
     font-size: 0.9rem;
     margin-bottom: 15px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.event-info .event-description {
+    color: #b3b3b3;
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .event-tag {
     display: inline-block;
-    padding: 8px 20px;
-    background: var(--secondary);
-    color: black;
-    font-weight: bold;
-    border-radius: 20px;
-    font-size: 0.8rem;
+    padding: 12px 30px;
+    background: transparent;
+    color: white;
+    font-weight: 700;
+    border: 2px solid #ff3c00;
+    border-radius: 30px;
+    font-size: 0.9rem;
     text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: 0.3s;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.event-card:hover .event-tag {
+    background: #ff3c00;
+    color: #000;
+    transform: scale(1.05);
+}
+
+/* Adattamento Mobile specifico per la griglia eventi */
+@media (max-width: 768px) {
+    .event-grid {
+        padding: 0 5%;
+        gap: 40px;
+    }
+
+    .event-card {
+        min-width: calc(100vw - 10%);
+        max-width: calc(100vw - 10%);
+        width: calc(100vw - 10%);
+    }
+
+    .event-card-top {
+        height: 240px;
+    }
+
+    .event-card-graphic-left {
+        font-size: 1rem;
+        padding: 15px;
+    }
+
+    .event-card-graphic-left div:last-child {
+        font-size: 2rem !important;
+    }
+
+    .event-info {
+        padding: 20px;
+    }
+
+    .event-info h3 {
+        font-size: 1.5rem;
+    }
 }
 
 
@@ -146,10 +273,39 @@ ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background: transparent;
+    backdrop-filter: none;
+    border-bottom: 1px solid transparent;
+    z-index: 1000;
+    transition: background 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                backdrop-filter 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                border-bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(0);
+}
+
+/* Header con sfondo quando scrolli */
+#main-header.scrolled {
     background: rgba(5, 5, 5, 0.85);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--primary);
-    z-index: 1000;
+}
+
+/* Header nascosto quando scrolli in basso */
+#main-header.hidden {
+    transform: translateY(-100%);
+}
+
+/* Header visibile quando scrolli in su */
+#main-header.visible {
+    transform: translateY(0);
+}
+
+/* Header più opaco quando il menu mobile è aperto */
+#main-header.menu-open {
+    background: rgba(5, 5, 5, 0.95) !important;
+    backdrop-filter: blur(15px) !important;
+    border-bottom: 1px solid var(--primary) !important;
 }
 
 .logo-combo {
@@ -175,7 +331,7 @@ ul {
     color: var(--primary);
     text-transform: uppercase;
     letter-spacing: 2px;
-    text-shadow: 0 0 10px var(--primary);
+    text-shadow: none;
     margin-left: 0;
 }
 
@@ -205,12 +361,13 @@ ul {
     font-weight: 700;
     text-transform: uppercase;
     font-size: 0.9rem;
-    transition: 0.3s;
+    transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                text-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .nav-menu a:hover {
     color: var(--primary);
-    text-shadow: 0 0 10px var(--primary);
+    text-shadow: none;
 }
 
 .btn-nav {
@@ -231,6 +388,8 @@ ul {
 .hamburger-menu i {
     font-size: 1.5rem;
     color: white;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 
@@ -292,7 +451,7 @@ ul {
 
 #hero h1 {
     font-family: var(--font-title);
-    font-size: 5rem;
+    font-size: 2.5rem;
     line-height: 1;
     margin-bottom: 20px;
     color: white;
@@ -336,10 +495,11 @@ ul {
 .section-title {
     text-align: center;
     font-family: var(--font-title);
-    font-size: 3rem;
-    color: white;
+    font-size: 2.5rem;
+    color: rgb(122, 0, 0);
     margin-bottom: 10px;
-    text-shadow: 2px 2px 0px var(--primary);
+    text-shadow: none;
+    white-space: nowrap;
 }
 
 .subtitle {
@@ -589,7 +749,7 @@ footer {
 /* MEDIA QUERIES (ADATTAMENTO TELEFONO) */
 @media (max-width: 768px) {
     #hero h1 {
-        font-size: 3rem;
+        font-size: 2rem;
     }
 
     /* Menu Mobile */
@@ -598,21 +758,76 @@ footer {
         top: 70px;
         left: 0;
         width: 100%;
-        background: black;
+        background: rgba(5, 5, 5, 0.95);
+        backdrop-filter: blur(15px);
         flex-direction: column;
         padding: 20px;
-        display: none;
+        display: flex;
         /* Nascosto di base */
+        border-top: 2px solid var(--primary);
         border-bottom: 2px solid var(--primary);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+        opacity: 0;
+        transform: translateY(-20px) scale(0.95);
+        pointer-events: none;
+        transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                    max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        max-height: 0;
+        overflow: hidden;
     }
 
     .nav-menu.active {
-        display: flex;
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        pointer-events: auto;
+        max-height: 100vh;
+        transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                    max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Animazione di chiusura più veloce e con effetto diverso */
+    .nav-menu:not(.active) {
+        transition: opacity 0.25s cubic-bezier(0.55, 0.055, 0.675, 0.19),
+                    transform 0.25s cubic-bezier(0.55, 0.055, 0.675, 0.19),
+                    max-height 0.25s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+        transform: translateY(10px) scale(0.98);
     }
 
     .nav-menu ul {
         flex-direction: column;
         align-items: center;
+    }
+
+    .nav-menu ul li {
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .nav-menu.active ul li {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .nav-menu.active ul li:nth-child(1) { transition-delay: 0.05s; }
+    .nav-menu.active ul li:nth-child(2) { transition-delay: 0.1s; }
+    .nav-menu.active ul li:nth-child(3) { transition-delay: 0.15s; }
+    .nav-menu.active ul li:nth-child(4) { transition-delay: 0.2s; }
+    .nav-menu.active ul li:nth-child(5) { transition-delay: 0.25s; }
+    .nav-menu.active ul li:nth-child(6) { transition-delay: 0.3s; }
+    .nav-menu.active ul li:nth-child(7) { transition-delay: 0.35s; }
+    .nav-menu.active ul li:nth-child(8) { transition-delay: 0.4s; }
+
+    /* Animazione più veloce per i link quando il menu si chiude */
+    .nav-menu:not(.active) ul li {
+        opacity: 0;
+        transform: translateY(5px);
+        transition: opacity 0.2s cubic-bezier(0.55, 0.055, 0.675, 0.19),
+                    transform 0.2s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+        transition-delay: 0s !important;
     }
 
     .hamburger-menu {
@@ -635,6 +850,15 @@ footer {
     .cta-section h2 {
         font-size: 2.5rem;
     }
+
+    /* Titoli più piccoli su mobile per stare in una riga */
+    .section-title {
+        font-size: 1.8rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
 }
 
 

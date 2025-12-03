@@ -223,8 +223,7 @@
    1. VARIABILI & SETUP (TEMA FUEGO)
    ========================================= */
 :root {
-    --bg-color: #050505;
-    /* Nero Profondo */
+    --bg-color: #050505; /* Nero Profondo */
     --box-bg: #111111;
     /* Grigio Scuro per le card */
     --primary: #ff3c00;
@@ -245,12 +244,18 @@
     box-sizing: border-box;
 }
 
+html,
+body {
+    height: 100%;
+}
+
 body {
     font-family: var(--font-body);
     background-color: var(--bg-color);
     color: var(--text-main);
-    overflow-x: hidden;
-    /* Evita scroll orizzontale indesiderato */
+    overflow-x: hidden; /* Evita scroll orizzontale indesiderato */
+    display: flex;
+    flex-direction: column;
 }
 
 a {
@@ -1067,12 +1072,12 @@ footer {
 }
 
 footer {
-    background: var(--box-bg);
+    background: var(--bg-color);
     padding: 30px;
     text-align: center;
     border-top: 2px solid var(--primary);
+    margin-top: auto; /* Spinge il footer in basso quando il contenuto è corto */
 }
-
 
 footer p {
     color: var(--text-dim);
@@ -1080,21 +1085,11 @@ footer p {
 }
 
 .footer-social {
-    background: var(--box-bg, #111);
-    padding: 36px 0 18px 0;
+    background: var(--bg-color);
+    padding: 24px 0 16px 0;
     text-align: center;
     border-top: 2px solid var(--primary, #ff3c00);
-}
-
-.social-row {
-    margin-bottom: 20px;
-}
-
-.footer-social {
-    background: var(--box-bg, #111);
-    padding: 36px 0 18px 0;
-    text-align: center;
-    border-top: 2px solid var(--primary, #ff3c00);
+    margin-top: auto; /* Assicura che il footer sociale stia appoggiato in basso */
 }
 
 .social-row {

@@ -1,10 +1,398 @@
+/* =========================================
+   1. VARIABILI & SETUP (TEMA FUEGO)
+   ========================================= */
+:root {
+    --bg-color: #050505;
+    --box-bg: #111111;
+    --primary: #ff3c00;
+    --secondary: #ffaa00;
+    --text-main: #ffffff;
+    --text-dim: #b3b3b3;
+    --gradient: linear-gradient(75deg, var(--primary), var(--secondary));
+    --shadow-glow: 0 0 30px rgba(255, 60, 0, 0.4);
+    --font-title: 'Teko', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+html,
+body {
+    height: 100%;
+}
 
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+/* =========================================
+   2. HEADER & NAVBAR
+   ========================================= */
+#main-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 12px 3% 12px 3%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: transparent;
+    backdrop-filter: none;
+    border-bottom: 1px solid transparent;
+    z-index: 1000;
+    transition: background 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        backdrop-filter 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        border-bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(0);
+}
+
+#main-header.scrolled {
+    background: rgba(5, 5, 5, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--primary);
+}
+
+#main-header.hidden {
+    transform: translateY(-100%);
+}
+
+#main-header.visible {
+    transform: translateY(0);
+}
+
+#main-header.menu-open {
+    background: rgba(5, 5, 5, 0.95) !important;
+    backdrop-filter: blur(15px) !important;
+    border-bottom: 1px solid var(--primary) !important;
+}
+
+.logo-combo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo-header {
+    width: 54px;
+    height: 54px;
+    object-fit: contain;
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+
+.logo {
+    font-family: var(--font-title);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: none;
+    margin-left: 0;
+}
+
+.logo span {
+    color: white;
+}
+
+.hamburger-menu {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    cursor: pointer;
+}
+
+.hamburger-menu i {
+    font-size: 1.5rem;
+    color: white;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-menu ul {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-menu a {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        text-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-menu a:hover {
+    color: var(--primary);
+    text-shadow: none;
+}
+
+.btn-nav {
+    background: var(--gradient);
+    padding: 8px 20px;
+    border-radius: 30px;
+    color: black !important;
+}
+
+.hamburger-menu {
+    display: none;
+}
+
+.bar {
+    width: 30px;
+    height: 3px;
+    background: white;
+}
+
+/* =========================================
+   3. HERO SECTION
+   ========================================= */
+/* =========================================
+   3. HERO SECTION
+   ========================================= */
+#hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    z-index: 0;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), var(--bg-color));
+    z-index: 1;
+}
+
+.hero-content {
+    z-index: 2;
+    padding: 0 20px;
+    position: relative;
+}
+
+#hero h1 {
+    font-family: var(--font-title);
+    font-size: 2.5rem;
+    line-height: 1;
+    margin-bottom: 20px;
+    color: white;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+#hero p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    color: #ddd;
+}
+
+.cta-button {
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    border: 2px solid var(--primary);
+    background: rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.4s;
+    box-shadow: 0 0 15px var(--primary);
+}
+
+.cta-button:hover {
+    background: var(--primary);
+    color: black;
+    box-shadow: 0 0 40px var(--primary);
+    transform: scale(1.1);
+}
 
 
 /* =========================================
-   NUOVA SEZIONE: EVENTI DEL MESE
+   4. SEZIONI GENERALI & TITOLI
+   ========================================= */
+.sezione-dark {
+    padding: 80px 0;
+    background: var(--bg-color);
+}
+
+#foto-gallery {
+    padding-top: 120px;
+    padding-bottom: 80px;
+}
+
+.section-title {
+    text-align: center;
+    font-family: var(--font-title);
+    font-size: 2.5rem;
+    color: rgb(122, 0, 0);
+    margin-bottom: 10px;
+    text-shadow: none;
+    white-space: nowrap;
+}
+
+.subtitle {
+    text-align: center;
+    color: var(--text-dim);
+    margin-bottom: 50px;
+}
+
+/* =========================================
+   5. CAROUSEL (FOTO & VIDEO)
+   ========================================= */
+.carousel-wrapper {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 20px 0;
+    position: relative;
+}
+
+.slide-box {
+    display: inline-block;
+    margin-right: 20px;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    border: 2px solid #333;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.slide-box:hover {
+    transform: scale(1.05);
+    border-color: var(--primary);
+    box-shadow: var(--shadow-glow);
+    z-index: 10;
+}
+
+.photo-box {
+    width: 355px;
+    height: 360px;
+}
+
+.video-box {
+    width: 280px;
+    height: 500px;
+    background: #000;
+}
+
+.slide-box img,
+.slide-box video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    color: rgba(255, 255, 255, 0.7);
+    pointer-events: none;
+}
+
+.card-info {
+    padding: 20px;
+    text-align: center;
+}
+
+.card-info h3 {
+    color: var(--primary);
+    font-family: var(--font-title);
+    font-size: 1.5rem;
+}
+
+.card-info p {
+    color: #888;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+/* =========================================
+   6. VIDEO WALL (GRIGLIA STATICA)
+   ========================================= */
+.video-grid {
+    display: grid;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 2%;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.video-card {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    background: #111;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 2px solid #333;
+    transition: 0.3s;
+}
+
+.video-card:hover {
+    border-color: var(--primary);
+    box-shadow: 0 0 20px rgba(255, 60, 0, 0.4);
+}
+
+.video-card video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    color: rgba(255, 255, 255, 0.7);
+    pointer-events: none;
+}
+
+/* =========================================
+   7. EVENTI DEL MESE
    ========================================= */
 #eventi-mese {
     padding: 80px 0;
@@ -59,7 +447,6 @@
     box-shadow: 0 15px 40px rgba(255, 60, 0, 0.4);
 }
 
-/* Sezione superiore con grafica divisa */
 .event-card-top {
     position: relative;
     height: 280px;
@@ -111,7 +498,6 @@
     z-index: 10;
 }
 
-/* Sezione inferiore con info evento */
 .event-info {
     padding: 25px;
     background: #000;
@@ -171,364 +557,21 @@
     transform: scale(1.05);
 }
 
-/* Adattamento Mobile specifico per la griglia eventi */
-@media (max-width: 768px) {
-    .event-grid {
-        padding: 0 5%;
-        gap: 40px;
-    }
-
-    .event-card {
-        min-width: calc(100vw - 10%);
-        max-width: calc(100vw - 10%);
-        width: calc(100vw - 10%);
-    }
-
-    .event-card-top {
-        height: 240px;
-    }
-
-    .event-card-graphic-left {
-        font-size: 1rem;
-        padding: 15px;
-    }
-
-    .event-card-graphic-left div:last-child {
-        font-size: 2rem !important;
-    }
-
-    .event-info {
-        padding: 20px;
-    }
-
-    .event-info h3 {
-        font-size: 1.5rem;
-    }
-}
-
-
-/* Adattamento Mobile specifico per la griglia eventi */
-@media (max-width: 768px) {
-    .event-grid {
-        /* Permette un layout a colonna singola su schermi molto piccoli */
-        grid-template-columns: 1fr;
-    }
-}
-
-
-
-
-
 /* =========================================
-   1. VARIABILI & SETUP (TEMA FUEGO)
+   8. CHI SIAMO
    ========================================= */
-:root {
-    --bg-color: #050505; /* Nero Profondo */
-    --box-bg: #111111;
-    /* Grigio Scuro per le card */
-    --primary: #ff3c00;
-    /* Rosso Fuoco acceso */
-    --secondary: #ffaa00;
-    /* Giallo/Arancio */
-    --text-main: #ffffff;
-    --text-dim: #b3b3b3;
-    --gradient: linear-gradient(75deg, var(--primary), var(--secondary));
-    --shadow-glow: 0 0 30px rgba(255, 60, 0, 0.4);
-     --font-title: 'Teko', sans-serif;   /* Nuovo font titoli */
-    --font-body: 'Inter', sans-serif;   /* Nuovo font corpo */
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html,
-body {
-    height: 100%;
-}
-
-body {
-    font-family: var(--font-body);
-    background-color: var(--bg-color);
-    color: var(--text-main);
-    overflow-x: hidden; /* Evita scroll orizzontale indesiderato */
-    display: flex;
-    flex-direction: column;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-ul {
-    list-style: none;
-}
-
-/* =========================================
-   2. HEADER & NAVBAR
-   ========================================= */
-#main-header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    padding: 12px 3% 12px 3%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: transparent;
-    backdrop-filter: none;
-    border-bottom: 1px solid transparent;
-    z-index: 1000;
-    transition: background 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-                backdrop-filter 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-                border-bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-                transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    transform: translateY(0);
-}
-
-/* Header con sfondo quando scrolli */
-#main-header.scrolled {
-    background: rgba(5, 5, 5, 0.85);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--primary);
-}
-
-/* Header nascosto quando scrolli in basso */
-#main-header.hidden {
-    transform: translateY(-100%);
-}
-
-/* Header visibile quando scrolli in su */
-#main-header.visible {
-    transform: translateY(0);
-}
-
-/* Header più opaco quando il menu mobile è aperto */
-#main-header.menu-open {
-    background: rgba(5, 5, 5, 0.95) !important;
-    backdrop-filter: blur(15px) !important;
-    border-bottom: 1px solid var(--primary) !important;
-}
-
-.logo-combo {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    /* puoi mettere anche 4px per meno spazio tra logo e scritta */
-}
-
-.logo-header {
-    width: 54px;
-    height: 54px;
-    object-fit: contain;
-    margin: 0;
-    padding: 0;
-    display: block;
-}
-
-.logo {
-    font-family: var(--font-title);
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--primary);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    text-shadow: none;
-    margin-left: 0;
-}
-
-.logo span {
-    color: white;
-}
-
-.hamburger-menu {
-    display: flex;
-    align-items: center;
-    margin-left: auto;
-    /* si assicura sia tutto a destra */
-}
-
-
-.nav-menu ul {
-    display: flex;
-    gap: 30px;
-}
-
-.nav-menu ul {
-    display: flex;
-    gap: 30px;
-}
-
-.nav-menu a {
-    font-weight: 700;
-    text-transform: uppercase;
-    font-size: 0.9rem;
-    transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-                text-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.nav-menu a:hover {
-    color: var(--primary);
-    text-shadow: none;
-}
-
-.btn-nav {
-    background: var(--gradient);
-    padding: 8px 20px;
-    border-radius: 30px;
-    color: black !important;
-}
-
-
-/* Hamburger menu */
-.hamburger-menu {
-    display: none;
-    cursor: pointer;
-
-}
-
-.hamburger-menu i {
-    font-size: 1.5rem;
-    color: white;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-                color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-
-
-
-
-/* Hamburger menu (Nascosto su PC) */
-.hamburger-menu {
-    display: none;
-    cursor: pointer;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.bar {
-    width: 30px;
-    height: 3px;
-    background: white;
-}
-
-/* =========================================
-   3. HERO SECTION
-   ========================================= */
-/* =========================================
-   3. HERO SECTION (Aggiornato per adattamento)
-   ========================================== */
-#hero {
-    height: 100vh;
-
-    /* Inserisci qui il nome del tuo file immagine */
-    background-image: url('GPP01731\(1\).jpg');
-    background-size: cover;      /* L'immagine copre tutta l'area */
-    background-position: center; /* L'immagine resta centrata */
-
-    /* background-attachment: scroll; è già il default, quindi puoi anche ometterlo */
-    
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    position: relative;
-}
-
-
-/* Overlay scuro per leggere il testo */
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), var(--bg-color));
-}
-
-.hero-content {
-    z-index: 2;
-    padding: 0 20px;
-}
-
-#hero h1 {
-    font-family: var(--font-title);
-    font-size: 2.5rem;
-    line-height: 1;
-    margin-bottom: 20px;
-    color: white;
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-}
-
-#hero p {
-    font-size: 1.2rem;
-    margin-bottom: 40px;
-    color: #ddd;
-}
-
-.cta-button {
-    padding: 15px 40px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: white;
-    border: 2px solid var(--primary);
-    background: rgba(0, 0, 0, 0.5);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    transition: 0.4s;
-    box-shadow: 0 0 15px var(--primary);
-}
-
-.cta-button:hover {
-    background: var(--primary);
-    color: black;
-    box-shadow: 0 0 40px var(--primary);
-    transform: scale(1.1);
-}
-
-/* =========================================
-   4. SEZIONI GENERALI & TITOLI
-   ========================================= */
-.sezione-dark {
-    padding: 80px 0;
-    background: var(--bg-color);
-}
-
-.section-title {
-    text-align: center;
-    font-family: var(--font-title);
-    font-size: 2.5rem;
-    color: rgb(122, 0, 0);
-    margin-bottom: 10px;
-    text-shadow: none;
-    white-space: nowrap;
-}
-
-.subtitle {
-    text-align: center;
-    color: var(--text-dim);
-    margin-bottom: 50px;
-}
-
-/* =========================================
-   NUOVA SEZIONE: CHI SIAMO (Stile Contest)
-   ========================================= */
 #chi-siamo-sezione {
     padding: 80px 20px;
     background: var(--bg-color);
 }
 
 .chi-siamo-box {
-    /* Stile base del contest-box */
     display: flex;
     flex-direction: column;
     align-items: center;
     max-width: 800px;
     margin: 0 auto;
-    padding: 40px 20px; 
+    padding: 40px 20px;
     background: var(--box-bg);
     border-radius: 20px;
     border: 3px solid var(--primary);
@@ -537,9 +580,8 @@ ul {
 }
 
 .chi-siamo-icon {
-    /* Icona Team/Gestione */
     font-size: 5rem;
-    color: var(--secondary); 
+    color: var(--secondary);
     margin-bottom: 20px;
     text-shadow: 0 0 10px var(--secondary);
 }
@@ -547,7 +589,7 @@ ul {
 .chi-siamo-content h3 {
     font-family: var(--font-title);
     font-size: 2.5rem;
-    color: var(--primary); 
+    color: var(--primary);
     margin-bottom: 15px;
 }
 
@@ -562,341 +604,14 @@ ul {
     text-align: center;
 }
 
-/* Riusiamo lo stile del pulsante contest */
 .chi-siamo-box .cta-contest {
-    margin-top: 0; 
-}
-
-/* Stili responsive per mobile */
-@media (max-width: 768px) {
-    .chi-siamo-box {
-        padding: 20px 10px;
-    }
-    .chi-siamo-content h3 {
-        font-size: 2rem;
-    }
-    .chi-siamo-icon {
-        font-size: 4rem;
-    }
-    .chi-siamo-content p {
-        font-size: 1rem;
-    }
+    margin-top: 0;
 }
 
 /* =========================================
-   5. CAROUSEL (FOTO & VIDEO) - LOGICA FLUIDA
-   ========================================= */
-.carousel-wrapper {
-    width: 100%;
-    overflow: hidden;
-    /* Nasconde ciò che esce */
-    white-space: nowrap;
-    /* Mette gli elementi in riga */
-    padding: 20px 0;
-    position: relative;
-}
-
-/* Stile comune per i BOX (slide) */
-.slide-box {
-    display: inline-block;
-    margin-right: 20px;
-    border-radius: 15px;
-    overflow: hidden;
-    position: relative;
-    border: 2px solid #333;
-    transition: transform 0.3s ease, border-color 0.3s ease;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-}
-
-.slide-box:hover {
-    transform: scale(1.05);
-    /* Zoom Hover */
-    border-color: var(--primary);
-    box-shadow: var(--shadow-glow);
-    z-index: 10;
-}
-
-/* --- FOTO BOX (Quadrati/Orizzontali) --- */
-.photo-box {
-    width: 355px;
-    height: 360px;
-}
-
-/* --- VIDEO BOX (Verticali - TikTok Style) --- */
-.video-box {
-    width: 280px;
-    /* Larghezza fissa */
-    height: 500px;
-    /* Altezza fissa verticale */
-    background: #000;
-}
-
-/* Immagini e Video dentro i box */
-.slide-box img,
-.slide-box video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    /* Riempie il box senza deformarsi */
-    display: block;
-}
-
-/* Icona play sopra i video */
-.video-overlay {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 3rem;
-    color: rgba(255, 255, 255, 0.7);
-    pointer-events: none;
-    /* Permette di cliccare attraverso */
-}
-
-
-
-.card-info {
-    padding: 20px;
-    text-align: center;
-}
-
-.card-info h3 {
-    color: var(--primary);
-    font-family: var(--font-title);
-    font-size: 1.5rem;
-}
-
-.card-info p {
-    color: #888;
-    font-size: 0.9rem;
-    margin-top: 5px;
-}
-
-/* =========================================
-   7. CTA TICKETS & FOOTER
-   ========================================= */
-.cta-section {
-    background: var(--primary);
-    color: black;
-    padding: 100px 20px;
-    text-align: center;
-    clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
-    /* Taglio obliquo figo */
-}
-
-.cta-section h2 {
-    font-size: 4rem;
-    font-family: var(--font-title);
-    margin-bottom: 20px;
-}
-
-.mega-button {
-    display: inline-block;
-    background: black;
-    color: white;
-    padding: 20px 50px;
-    font-size: 1.5rem;
-    font-weight: bold;
-    border-radius: 50px;
-    margin-top: 30px;
-    transition: 0.3s;
-    border: 4px solid white;
-}
-
-.mega-button:hover {
-    background: white;
-    color: black;
-    transform: scale(1.1) rotate(-2deg);
-}
-
-footer {
-    background: black;
-    padding: 30px;
-    text-align: center;
-    color: #555;
-    font-size: 0.8rem;
-}
-
-/* =========================================
-   8. ANIMAZIONI & RESPONSIVE (MOBILE)
-   ========================================= */
-/* Animazione Pulsazione */
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.05);
-    }
-
-    100% {
-        transform: scale(1);
-    }
-}
-
-.pulse-anim {
-    animation: pulse 2s infinite;
-}
-
-/* Reveal allo scroll (Classe aggiunta da JS) */
-.reveal {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: 1s;
-}
-
-.reveal.active {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* MEDIA QUERIES (ADATTAMENTO TELEFONO) */
-@media (max-width: 768px) {
-    #hero h1 {
-        font-size: 2rem;
-    }
-
-    /* Menu Mobile */
-    .nav-menu {
-        position: absolute;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        background: rgba(5, 5, 5, 0.95);
-        backdrop-filter: blur(15px);
-        flex-direction: column;
-        padding: 20px;
-        display: flex;
-        /* Nascosto di base */
-        border-top: 2px solid var(--primary);
-        border-bottom: 2px solid var(--primary);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-        opacity: 0;
-        transform: translateY(-20px) scale(0.95);
-        pointer-events: none;
-        transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-                    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-                    max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        max-height: 0;
-        overflow: hidden;
-    }
-
-    .nav-menu.active {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-        pointer-events: auto;
-        max-height: 100vh;
-        transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-                    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-                    max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    /* Animazione di chiusura più veloce e con effetto diverso */
-    .nav-menu:not(.active) {
-        transition: opacity 0.25s cubic-bezier(0.55, 0.055, 0.675, 0.19),
-                    transform 0.25s cubic-bezier(0.55, 0.055, 0.675, 0.19),
-                    max-height 0.25s cubic-bezier(0.55, 0.055, 0.675, 0.19);
-        transform: translateY(10px) scale(0.98);
-    }
-
-    .nav-menu ul {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .nav-menu ul li {
-        opacity: 0;
-        transform: translateY(-10px);
-        transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-                    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .nav-menu.active ul li {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    .nav-menu.active ul li:nth-child(1) { transition-delay: 0.05s; }
-    .nav-menu.active ul li:nth-child(2) { transition-delay: 0.1s; }
-    .nav-menu.active ul li:nth-child(3) { transition-delay: 0.15s; }
-    .nav-menu.active ul li:nth-child(4) { transition-delay: 0.2s; }
-    .nav-menu.active ul li:nth-child(5) { transition-delay: 0.25s; }
-    .nav-menu.active ul li:nth-child(6) { transition-delay: 0.3s; }
-    .nav-menu.active ul li:nth-child(7) { transition-delay: 0.35s; }
-    .nav-menu.active ul li:nth-child(8) { transition-delay: 0.4s; }
-
-    /* Animazione più veloce per i link quando il menu si chiude */
-    .nav-menu:not(.active) ul li {
-        opacity: 0;
-        transform: translateY(5px);
-        transition: opacity 0.2s cubic-bezier(0.55, 0.055, 0.675, 0.19),
-                    transform 0.2s cubic-bezier(0.55, 0.055, 0.675, 0.19);
-        transition-delay: 0s !important;
-    }
-
-    .hamburger-menu {
-        display: flex;
-    }
-
-    /* Adattamento Carousel Mobile */
-    .photo-box {
-        width: 250px;
-        height: 250px;
-    }
-
-    .video-box {
-        width: 200px;
-        height: 350px;
-    }
-
-    /* Video più piccoli su mobile */
-
-    .cta-section h2 {
-        font-size: 2.5rem;
-    }
-
-    /* Titoli più piccoli su mobile per stare in una riga */
-    .section-title {
-        font-size: 1.8rem;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-}
-
-
-
-/* =========================================
-   2. VIDEO WALL (GRIGLIA STATICA) - MODIFICHE PER DESKTOP
-   ========================================= */
-.video-grid {
-    display: grid;
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 2%;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 15px;
-}
-
-.video-card {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 9 / 16;
-    /* Formato verticale tipo smartphone */
-    background: #111;
-    border-radius: 15px;
-    overflow: hidden;
-    border: 2px solid #333;
-    transition: 0.3s;
-}
-
-/* =========================================
-   NUOVA SEZIONE: CONTEST DEL MESE STYLES (Base PC)
+   9. CONTEST DEL MESE
    ========================================= */
 #contest-del-mese {
-    /* Aggiungiamo un piccolo padding laterale anche per schermi grandi */
     padding: 80px 20px;
     background: var(--bg-color);
 }
@@ -989,11 +704,306 @@ footer {
     box-shadow: 0 0 30px var(--primary);
 }
 
+/* =========================================
+   10. CTA TICKETS & FOOTER
+   ========================================= */
+.cta-section {
+    background: var(--primary);
+    color: black;
+    padding: 100px 20px;
+    text-align: center;
+    clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
+}
+
+.cta-section h2 {
+    font-size: 4rem;
+    font-family: var(--font-title);
+    margin-bottom: 20px;
+}
+
+.mega-button {
+    display: inline-block;
+    background: black;
+    color: white;
+    padding: 20px 50px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: 50px;
+    margin-top: 30px;
+    transition: 0.3s;
+    border: 4px solid white;
+}
+
+.mega-button:hover {
+    background: white;
+    color: black;
+    transform: scale(1.1) rotate(-2deg);
+}
+
+footer {
+    background: var(--bg-color);
+    padding: 30px;
+    text-align: center;
+    border-top: 2px solid var(--primary);
+    margin-top: auto;
+}
+
+footer p {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+}
+
+.footer-social {
+    background: var(--bg-color);
+    padding: 24px 0 16px 0;
+    text-align: center;
+    border-top: 2px solid var(--primary);
+    margin-top: auto;
+}
+
+.social-row {
+    margin-bottom: 20px;
+}
+
+.footer-social a {
+    display: inline-block;
+    margin: 0 18px;
+    font-size: 2.6rem;
+    transition: transform 0.17s;
+    vertical-align: middle;
+}
+
+.footer-social p {
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    margin-top: 12px;
+    letter-spacing: 1px;
+}
+
+.ig-link i {
+    background: radial-gradient(circle farthest-corner at 35% 90%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+
+.tt-link i {
+    color: #000;
+    position: relative;
+}
+
+.tt-link i::before {
+    filter: drop-shadow(2px 2px 0 #25F4EE) drop-shadow(-2px -2px 0 #FE2C55);
+}
 
 /* =========================================
-   MEDIA QUERY: STILI SOLO PER SCHERMI PICCOLI (Mobile)
+   11. ANIMAZIONI
+   ========================================= */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.pulse-anim {
+    animation: pulse 2s infinite;
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: 1s;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================================
+   12. RESPONSIVE MOBILE
    ========================================= */
 @media (max-width: 768px) {
+    #hero h1 {
+        font-size: 2rem;
+    }
+
+    .nav-menu {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: rgba(5, 5, 5, 0.95);
+        backdrop-filter: blur(15px);
+        flex-direction: column;
+        padding: 20px;
+        display: flex;
+        border-top: 2px solid var(--primary);
+        border-bottom: 2px solid var(--primary);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+        opacity: 0;
+        transform: translateY(-20px) scale(0.95);
+        pointer-events: none;
+        transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+            transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+            max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        max-height: 0;
+        overflow: hidden;
+    }
+
+    .nav-menu.active {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        pointer-events: auto;
+        max-height: 100vh;
+    }
+
+    .nav-menu:not(.active) {
+        transition: opacity 0.25s cubic-bezier(0.55, 0.055, 0.675, 0.19),
+            transform 0.25s cubic-bezier(0.55, 0.055, 0.675, 0.19),
+            max-height 0.25s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+        transform: translateY(10px) scale(0.98);
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-menu ul li {
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+            transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .nav-menu.active ul li {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .nav-menu.active ul li:nth-child(1) {
+        transition-delay: 0.05s;
+    }
+
+    .nav-menu.active ul li:nth-child(2) {
+        transition-delay: 0.1s;
+    }
+
+    .nav-menu.active ul li:nth-child(3) {
+        transition-delay: 0.15s;
+    }
+
+    .nav-menu.active ul li:nth-child(4) {
+        transition-delay: 0.2s;
+    }
+
+    .nav-menu.active ul li:nth-child(5) {
+        transition-delay: 0.25s;
+    }
+
+    .nav-menu.active ul li:nth-child(6) {
+        transition-delay: 0.3s;
+    }
+
+    .nav-menu.active ul li:nth-child(7) {
+        transition-delay: 0.35s;
+    }
+
+    .nav-menu.active ul li:nth-child(8) {
+        transition-delay: 0.4s;
+    }
+
+    .nav-menu:not(.active) ul li {
+        opacity: 0;
+        transform: translateY(5px);
+        transition: opacity 0.2s cubic-bezier(0.55, 0.055, 0.675, 0.19),
+            transform 0.2s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+        transition-delay: 0s !important;
+    }
+
+    .hamburger-menu {
+        display: flex;
+    }
+
+    .photo-box {
+        width: 250px;
+        height: 250px;
+    }
+
+    .video-box {
+        width: 200px;
+        height: 350px;
+    }
+
+    .cta-section h2 {
+        font-size: 2.5rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .event-grid {
+        padding: 0 5%;
+        gap: 40px;
+    }
+
+    .event-card {
+        min-width: calc(100vw - 10%);
+        max-width: calc(100vw - 10%);
+        width: calc(100vw - 10%);
+    }
+
+    .event-card-top {
+        height: 240px;
+    }
+
+    .event-card-graphic-left {
+        font-size: 1rem;
+        padding: 15px;
+    }
+
+    .event-card-graphic-left div:last-child {
+        font-size: 2rem !important;
+    }
+
+    .event-info {
+        padding: 20px;
+    }
+
+    .event-info h3 {
+        font-size: 1.5rem;
+    }
+
+    .chi-siamo-box {
+        padding: 20px 10px;
+    }
+
+    .chi-siamo-content h3 {
+        font-size: 2rem;
+    }
+
+    .chi-siamo-icon {
+        font-size: 4rem;
+    }
+
+    .chi-siamo-content p {
+        font-size: 1rem;
+    }
+
     .contest-box {
         padding: 20px 10px;
     }
@@ -1019,28 +1029,12 @@ footer {
         padding: 12px 25px;
         margin-top: 20px;
     }
-}
 
-/* Animazione pulse per la scritta SOLD OUT */
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-        opacity: 1;
-    }
-
-    50% {
-        transform: scale(1.1);
-        opacity: 0.7;
-    }
-
-    100% {
-        transform: scale(1);
-        opacity: 1;
+    #foto-gallery {
+        padding-top: 80px;
     }
 }
 
-
-/* Adattamento Responsive per la sezione Contest */
 @media (min-width: 600px) {
     .contest-box {
         flex-direction: row;
@@ -1058,74 +1052,4 @@ footer {
     .contest-poster {
         margin-bottom: 0;
     }
-}
-
-.video-card:hover {
-    border-color: var(--primary);
-    box-shadow: 0 0 20px rgba(255, 60, 0, 0.4);
-}
-
-.video-card video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-footer {
-    background: var(--bg-color);
-    padding: 30px;
-    text-align: center;
-    border-top: 2px solid var(--primary);
-    margin-top: auto; /* Spinge il footer in basso quando il contenuto è corto */
-}
-
-footer p {
-    color: var(--text-dim);
-    font-size: 0.9rem;
-}
-
-.footer-social {
-    background: var(--bg-color);
-    padding: 24px 0 16px 0;
-    text-align: center;
-    border-top: 2px solid var(--primary, #ff3c00);
-    margin-top: auto; /* Assicura che il footer sociale stia appoggiato in basso */
-}
-
-.social-row {
-    margin-bottom: 20px;
-}
-
-.footer-social a {
-    display: inline-block;
-    margin: 0 18px;
-    font-size: 2.6rem;
-    transition: transform 0.17s;
-    vertical-align: middle;
-}
-
-.footer-social p {
-    color: var(--text-dim, #b3b3b3);
-    font-size: 0.95rem;
-    margin-top: 12px;
-    letter-spacing: 1px;
-}
-
-/* Colori originali social */
-.ig-link i {
-    background: radial-gradient(circle farthest-corner at 35% 90%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-fill-color: transparent;
-}
-
-.tt-link i {
-    color: #000;
-    position: relative;
-}
-
-.tt-link i::before {
-    /* TikTok 'd' parte celeste-rosa tramite drop-shadow */
-    filter: drop-shadow(2px 2px 0 #25F4EE) drop-shadow(-2px -2px 0 #FE2C55);
 }

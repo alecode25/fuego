@@ -3,15 +3,21 @@
    ========================================= */
 :root {
     --bg-color: #050505;
+    /* Nero Profondo */
     --box-bg: #111111;
+    /* Grigio Scuro per le card */
     --primary: #ff3c00;
+    /* Rosso Fuoco acceso */
     --secondary: #ffaa00;
+    /* Giallo/Arancio */
     --text-main: #ffffff;
     --text-dim: #b3b3b3;
     --gradient: linear-gradient(75deg, var(--primary), var(--secondary));
     --shadow-glow: 0 0 30px rgba(255, 60, 0, 0.4);
     --font-title: 'Teko', sans-serif;
+    /* Nuovo font titoli */
     --font-body: 'Inter', sans-serif;
+    /* Nuovo font corpo */
 }
 
 * {
@@ -20,10 +26,14 @@
     box-sizing: border-box;
 }
 
-html,
 body {
-    height: 100%;
+    font-family: var(--font-body);
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    overflow-x: hidden;
+
 }
+
 
 body {
     font-family: var(--font-body);
@@ -44,7 +54,7 @@ ul {
 }
 
 /* =========================================
-   2. HEADER & NAVBAR
+   2. HEADER & NAVBAR (DAL SECONDO CSS)
    ========================================= */
 #main-header {
     position: fixed;
@@ -165,6 +175,9 @@ ul {
 }
 
 /* =========================================
+   3. SEZIONE HERO (
+   ========================================= */
+/* =========================================
    3. HERO SECTION
    ========================================= */
 /* =========================================
@@ -172,33 +185,38 @@ ul {
    ========================================= */
 #hero {
     height: 100vh;
-
-    /* Inserisci qui il nome del tuo file immagine */
     background-image: url('GPP01731\(1\).jpg');
     background-size: cover;
-    /* L'immagine copre tutta l'area */
     background-position: center;
-    /* L'immagine resta centrata */
-
-    /* background-attachment: scroll; è già il default, quindi puoi anche ometterlo */
-
+    background-attachment: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     position: relative;
+    overflow: hidden;
 }
-
 
 /* Overlay scuro per leggere il testo */
 .overlay {
-    position: absolute;
+    position: absolute;  /* CAMBIATO da fixed a absolute */
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), var(--bg-color));
+    width: 100%;  /* CAMBIATO da 100vw a 100% */
+    height: 100%;  /* CAMBIATO da 100vh a 100% */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(5, 5, 5, 1));
+    z-index: 1;
+    pointer-events: none;
 }
+
+.hero-content {
+    z-index: 2;
+    padding: 0 20px;
+    position: relative;
+}
+
+
+
 
 .hero-bg-image {
     position: absolute;
@@ -212,12 +230,6 @@ ul {
 }
 
 
-
-.hero-content {
-    z-index: 2;
-    padding: 0 20px;
-    position: relative;
-}
 
 #hero h1 {
     font-family: var(--font-title);
@@ -254,7 +266,6 @@ ul {
     transform: scale(1.1);
 }
 
-
 /* =========================================
    4. SEZIONI GENERALI & TITOLI
    ========================================= */
@@ -285,7 +296,58 @@ ul {
 }
 
 /* =========================================
-   5. CAROUSEL (FOTO & VIDEO)
+   NUOVA SEZIONE: CHI SIAMO (Stile Contest)
+   ========================================= */
+#chi-siamo-sezione {
+    padding: 80px 20px;
+    background: var(--bg-color);
+}
+
+.chi-siamo-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background: var(--box-bg);
+    border-radius: 20px;
+    border: 3px solid var(--primary);
+    box-shadow: 0 0 40px rgba(255, 60, 0, 0.7);
+    text-align: center;
+}
+
+.chi-siamo-icon {
+    font-size: 5rem;
+    color: var(--secondary);
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px var(--secondary);
+}
+
+.chi-siamo-content h3 {
+    font-family: var(--font-title);
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 15px;
+}
+
+.chi-siamo-content p {
+    font-size: 1.1rem;
+    color: var(--text-dim);
+    margin-bottom: 30px;
+    line-height: 1.6;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.chi-siamo-box .cta-contest {
+    margin-top: 0;
+}
+
+/* =========================================
+   5. CAROUSEL (FOTO & VIDEO) - LOGICA FLUIDA
    ========================================= */
 .carousel-wrapper {
     width: 100%;
@@ -570,58 +632,7 @@ ul {
 }
 
 /* =========================================
-   8. CHI SIAMO
-   ========================================= */
-#chi-siamo-sezione {
-    padding: 80px 20px;
-    background: var(--bg-color);
-}
-
-.chi-siamo-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 40px 20px;
-    background: var(--box-bg);
-    border-radius: 20px;
-    border: 3px solid var(--primary);
-    box-shadow: 0 0 40px rgba(255, 60, 0, 0.7);
-    text-align: center;
-}
-
-.chi-siamo-icon {
-    font-size: 5rem;
-    color: var(--secondary);
-    margin-bottom: 20px;
-    text-shadow: 0 0 10px var(--secondary);
-}
-
-.chi-siamo-content h3 {
-    font-family: var(--font-title);
-    font-size: 2.5rem;
-    color: var(--primary);
-    margin-bottom: 15px;
-}
-
-.chi-siamo-content p {
-    font-size: 1.1rem;
-    color: var(--text-dim);
-    margin-bottom: 30px;
-    line-height: 1.6;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-}
-
-.chi-siamo-box .cta-contest {
-    margin-top: 0;
-}
-
-/* =========================================
-   9. CONTEST DEL MESE
+   8. CONTEST DEL MESE
    ========================================= */
 #contest-del-mese {
     padding: 80px 20px;
@@ -717,7 +728,7 @@ ul {
 }
 
 /* =========================================
-   10. CTA TICKETS & FOOTER
+   9. CTA TICKETS & FOOTER
    ========================================= */
 .cta-section {
     background: var(--primary);
@@ -810,7 +821,7 @@ footer p {
 }
 
 /* =========================================
-   11. ANIMAZIONI
+   10. ANIMAZIONI
    ========================================= */
 @keyframes pulse {
     0% {
@@ -842,7 +853,7 @@ footer p {
 }
 
 /* =========================================
-   12. RESPONSIVE MOBILE
+   11. RESPONSIVE MOBILE
    ========================================= */
 @media (max-width: 768px) {
     #hero h1 {

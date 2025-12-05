@@ -8,21 +8,20 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Oswald:wght@400;700&family=Poppins:wght@400;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Oswald:wght@400;700&display=swap"
         rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <link rel="stylesheet" href="style.css?t=20251203230700">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
     <header id="main-header">
         <div class="logo-combo">
-            <a href="index.html">
-                <img src="logo.png" class="logo-header" alt="FUEGO Rimini Logo">
-            </a>
+            <img src="logo.png" class="logo-header" alt="FUEGO Rimini Logo">
+            <div class="logo">FUEGO <span>RIMINI</span></div>
         </div>
         <div class="hamburger-menu"><i class="fas fa-bars"></i></div>
         <nav class="nav-menu">
@@ -35,6 +34,8 @@
                 <li><a href="contatti.html">Contatti</a></li>
                 <li><a href="#chi-siamo-sezione">Chi Siamo</a></li>
                 <li><a href="#tickets" class="btn-nav">Prevendita</a></li>
+
+
             </ul>
         </nav>
     </header>
@@ -48,12 +49,11 @@
         </div>
     </section>
 
-
-
     <section id="foto-gallery" class="sezione-dark">
         <h2 class="section-title">GALLERIA FOTO</h2>
 
         <div class="carousel-wrapper carousel-foto">
+
             <div class="slide-box photo-box">
                 <img src="foto2.jpeg" alt="Fuego Event">
             </div>
@@ -80,10 +80,11 @@
         <p class="subtitle">Clicca sui video per attivare l'audio.</p>
 
         <div class="video-grid">
+
             <div class="video-card">
                 <video
                     src="SaveGram.App_AQMhJT9yuytOn7n3HNbKA28DrUa4wcLPdqpE4X-L_BtagEZbuLtd4Ky53LBDG3mgwB2SK1zRKidJVOp2K4_QXJ7SdC-77vTTSTizokc.mp4"
-                    loop muted playsinline></video>
+                    loop muted playsinline>loop muted playsinline preload="metadata"></video>
                 <div class="play-icon"><i class="fas fa-play"></i></div>
             </div>
 
@@ -93,6 +94,7 @@
                     loop muted playsinline></video>
                 <div class="play-icon"><i class="fas fa-play"></i></div>
             </div>
+
         </div>
     </section>
 
@@ -123,6 +125,7 @@
                 </div>
             </a>
 
+
             <a href="https://www.ticketsms.it/event/Christmas-W-Artie-Five-2312-Baia-Imperiale-Gabicce-Mare-Baia-Imperiale-23-12-2025"
                 class="event-card">
                 <div class="event-card-top">
@@ -144,6 +147,7 @@
                     <span class="event-tag">PRENOTA ORA</span>
                 </div>
             </a>
+
 
             <a href="https://www.ticketsms.it/event/Repeat-Flaco-G-Misano-Adriatico-Peter-Pan-Club-07-12-2025"
                 target="_blank" class="event-card">
@@ -169,6 +173,7 @@
         </div>
     </section>
 
+
     <section id="contest-del-mese" class="sezione-dark">
         <h2 class="section-title">CONTEST DEL MESE</h2>
 
@@ -190,7 +195,7 @@
                 <div class="info-line">
                     <i class="fas fa-map-marker-alt"></i> BLOW UP: VIALE REGINA ELENA, 209
                 </div>
-                <a href="https://www.ticketsms.it/" class="cta-contest">PRENOTA ORA! ULTIMI INGRESSI</a>
+                <a href="#tickets" class="cta-contest">PRENOTA ORA! ULTIMI INGRESSI</a>
             </div>
         </div>
     </section>
@@ -202,6 +207,7 @@
             <i class="fas fa-users-cog chi-siamo-icon"></i>
 
             <div class="chi-siamo-content">
+
                 <p>
                     FUEGO è l'anima infuocata della nightlife di Rimini.
                     Siamo un team di professionisti della movida, specializzati
@@ -217,9 +223,13 @@
     </section>
 
     <section id="tickets" class="cta-section">
+        <div class="cta-diagonal-bg"></div>
+
+
         <h2 class="pulse-anim">PRENDI LA TUA PREVENDITA ORA!</h2>
         <a href="https://www.ticketsms.it/" class="mega-button">ACQUISTA PREVENDITA</a>
     </section>
+
 
     <footer class="footer-social">
         <div class="social-row">
@@ -234,6 +244,9 @@
         </div>
         <p>© 2025 FUEGO STAFF RIMINI</p>
     </footer>
+
+
+
 
     <script src="script.js"></script>
 </body>

@@ -20,6 +20,14 @@
     /* Nuovo font corpo */
 }
 
+html {
+    margin: 0;
+    padding: 0;
+    background: var(--bg-color);
+    overflow-x: hidden;
+    width: 100%;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -31,18 +39,15 @@ body {
     background-color: var(--bg-color);
     color: var(--text-main);
     overflow-x: hidden;
-
-}
-
-
-body {
-    font-family: var(--font-body);
-    background-color: var(--bg-color);
-    color: var(--text-main);
-    overflow-x: hidden;
     display: flex;
     flex-direction: column;
+    margin: 0;
+    padding: 0;
+    width: 100%;
 }
+
+
+
 
 a {
     text-decoration: none;
@@ -174,21 +179,11 @@ ul {
     background: white;
 }
 
-/* =========================================
-   3. SEZIONE HERO (
-   ========================================= */
-/* =========================================
-   3. HERO SECTION
-   ========================================= */
-/* =========================================
-   3. HERO SECTION
-   ========================================= */
+
+/* hero section */
 #hero {
-    height: 100vh;
-    background-image: url('GPP01731\(1\).jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    height: 100dvh;
+    /* anche l'hero usa dvh */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -197,39 +192,89 @@ ul {
     overflow: hidden;
 }
 
-/* Overlay scuro per leggere il testo */
-.overlay {
-    position: absolute;  /* CAMBIATO da fixed a absolute */
-    top: 0;
-    left: 0;
-    width: 100%;  /* CAMBIATO da 100vw a 100% */
-    height: 100%;  /* CAMBIATO da 100vh a 100% */
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(5, 5, 5, 1));
-    z-index: 1;
-    pointer-events: none;
-}
-
-.hero-content {
-    z-index: 2;
-    padding: 0 20px;
-    position: relative;
-}
-
-
-
-
 .hero-bg-image {
+    position: absolute;
+    inset: 0;
+    /* top/right/bottom/left: 0 */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+}
+
+/* Fallback per browser che non supportano dvh */
+@supports not (height: 100dvh) {
+    .hero-bg-image {
+        height: 100vh;
+        min-height: -webkit-fill-available;
+    }
+
+    #hero {
+        height: 100vh;
+        min-height: -webkit-fill-available;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-bg-image {
+        height: calc(100vh + 100px);
+        /* estendi l'immagine oltre il viewport */
+        top: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-bg-image {
+        position: fixed;
+        top: -100px;
+        /* estendi molto sopra */
+        left: -20px;
+        width: calc(100% + 40px);
+        /* estendi ai lati */
+        height: calc(100vh + 200px);
+        /* estendi molto sotto */
+        object-fit: cover;
+        object-position: center center;
+        z-index: 0;
+    }
+
+    /* Assicura che tutte le sezioni abbiano sfondo solido */
+    section {
+        background: var(--bg-color) !important;
+        position: relative;
+        z-index: 2;
+    }
+
+    #foto-gallery,
+    #video-wall,
+    #eventi-mese {
+        background: var(--bg-color) !important;
+        margin: 0 !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+}
+
+
+.overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: center center;
-    z-index: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(5, 5, 5, 1));
+    z-index: 1;
+    /* sopra l'immagine */
+    pointer-events: none;
 }
 
-
+.hero-content {
+    z-index: 2;
+    /* sopra tutto */
+    padding: 0 20px;
+    position: relative;
+}
 
 #hero h1 {
     font-family: var(--font-title);
@@ -238,12 +283,17 @@ ul {
     margin-bottom: 20px;
     color: white;
     text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    position: relative;
+    z-index: 3;
+    /* assicura che sia visibile */
 }
 
 #hero p {
     font-size: 1.2rem;
     margin-bottom: 40px;
     color: #ddd;
+    position: relative;
+    z-index: 3;
 }
 
 .cta-button {
@@ -257,6 +307,10 @@ ul {
     letter-spacing: 2px;
     transition: 0.4s;
     box-shadow: 0 0 15px var(--primary);
+    position: relative;
+    z-index: 3;
+    /* assicura che sia cliccabile */
+    display: inline-block;
 }
 
 .cta-button:hover {
@@ -266,17 +320,29 @@ ul {
     transform: scale(1.1);
 }
 
+
 /* =========================================
    4. SEZIONI GENERALI & TITOLI
    ========================================= */
+/* Elimina gap tra sezioni */
 .sezione-dark {
     padding: 80px 0;
     background: var(--bg-color);
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    /* aggiungi */
 }
 
 #foto-gallery {
     padding-top: 120px;
     padding-bottom: 80px;
+    background: var(--bg-color);
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    overflow: hidden;
+    /* aggiungi per nascondere overflow */
 }
 
 .section-title {
@@ -355,7 +421,10 @@ ul {
     white-space: nowrap;
     padding: 20px 0;
     position: relative;
+    background: var(--bg-color);
+    /* aggiungi sfondo nero */
 }
+
 
 .slide-box {
     display: inline-block;
@@ -465,6 +534,8 @@ ul {
     pointer-events: none;
 }
 
+
+
 /* =========================================
    7. EVENTI DEL MESE
    ========================================= */
@@ -475,30 +546,41 @@ ul {
 }
 
 .event-grid {
-    display: flex;
-    gap: 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 40px;
     padding: 0 5%;
-    max-width: 100%;
+    max-width: 1600px;
     margin: 0 auto;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
-    scrollbar-color: var(--primary) transparent;
 }
 
-.event-grid::-webkit-scrollbar {
-    height: 8px;
-}
+@media (max-width: 768px) {
+    .event-grid {
+        display: flex;
+        grid-template-columns: none;
+        gap: 40px;
+        padding: 0 5%;
+        max-width: 100%;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+        scrollbar-color: var(--primary) transparent;
+    }
 
-.event-grid::-webkit-scrollbar-track {
-    background: transparent;
-}
+    .event-grid::-webkit-scrollbar {
+        height: 8px;
+    }
 
-.event-grid::-webkit-scrollbar-thumb {
-    background: var(--primary);
-    border-radius: 4px;
+    .event-grid::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .event-grid::-webkit-scrollbar-thumb {
+        background: var(--primary);
+        border-radius: 4px;
+    }
 }
 
 .event-card {
@@ -508,12 +590,17 @@ ul {
     overflow: hidden;
     transition: 0.3s;
     position: relative;
-    min-width: calc(100vw - 10%);
-    max-width: calc(100vw - 10%);
-    width: calc(100vw - 10%);
-    flex-shrink: 0;
-    scroll-snap-align: center;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+@media (max-width: 768px) {
+    .event-card {
+        min-width: calc(100vw - 10%);
+        max-width: calc(100vw - 10%);
+        width: calc(100vw - 10%);
+        flex-shrink: 0;
+        scroll-snap-align: center;
+    }
 }
 
 .event-card:hover {
@@ -523,7 +610,7 @@ ul {
 
 .event-card-top {
     position: relative;
-    height: 280px;
+    height: 320px;
     display: flex;
     overflow: hidden;
 }
@@ -557,10 +644,14 @@ ul {
     display: block;
 }
 
+.event-card-top {
+    position: relative;
+}
+
 .event-badge {
     position: absolute;
     top: 15px;
-    right: 15px;
+    left: 15px;
     background: #ff0000;
     color: white;
     padding: 6px 12px;
@@ -580,7 +671,7 @@ ul {
 
 .event-info h3 {
     font-family: 'Poppins', sans-serif;
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: 700;
     color: #fff;
     margin-bottom: 10px;
@@ -731,17 +822,13 @@ ul {
    9. CTA TICKETS & FOOTER
    ========================================= */
 .cta-section {
-    background: var(--primary);
-    color: black;
+    background: var(--primary);          
+    color: black;             
     padding: 100px 20px;
     text-align: center;
     clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
-}
-
-.cta-section h2 {
-    font-size: 4rem;
-    font-family: var(--font-title);
-    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
 }
 
 .mega-button {
@@ -757,6 +844,15 @@ ul {
     border: 4px solid white;
 }
 
+
+.cta-section h2 {
+    font-size: 4rem;
+    font-family: var(--font-title);
+    margin-bottom: 20px;
+}
+
+
+
 .mega-button:hover {
     background: white;
     color: black;
@@ -769,6 +865,8 @@ footer {
     text-align: center;
     border-top: 2px solid var(--primary);
     margin-top: auto;
+    position: relative;
+    z-index: 2;
 }
 
 footer p {

@@ -197,7 +197,7 @@ ul {
     left: 0;
     width: 100%;
     height: 100dvh;
-    background: url("GPP01731(1).jpg") center/cover no-repeat;
+    background: url("assets/GPP01731(1).jpg") center/cover no-repeat;
     z-index: 0;
 }
 
@@ -801,6 +801,101 @@ ul {
     background: white;
     box-shadow: 0 0 30px var(--primary);
 }
+
+/* =========================================
+   8. FAQ SECTION
+   ========================================= */
+.faq-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.faq-item {
+    margin-bottom: 18px;
+    border-radius: 14px;
+    background: radial-gradient(circle at top left, rgba(255,60,0,0.17), transparent 55%),
+                radial-gradient(circle at bottom right, rgba(255,170,0,0.14), transparent 55%),
+                #050505;
+    border: 1px solid #222;
+    box-shadow: 0 0 0 rgba(0,0,0,0);
+    overflow: hidden;
+    transition: border-color 0.25s, box-shadow 0.25s, transform 0.2s;
+}
+
+.faq-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.8);
+}
+
+.faq-item.active {
+    border-color: var(--secondary);
+    box-shadow: 0 0 18px rgba(255,170,0,0.45);
+}
+
+.faq-question {
+    width: 100%;
+    padding: 15px 18px;
+    border: none;
+    background: transparent;
+    color: #fff;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1rem;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.faq-question span {
+    flex: 1;
+    padding-right: 10px;
+}
+
+.faq-question i {
+    font-size: 0.95rem;
+    color: var(--secondary);
+    transition: transform 0.25s;
+}
+
+.faq-item.active .faq-question i {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    opacity: 0;
+    padding: 0 18px;
+    transition: max-height 0.3s ease-out, opacity 0.25s ease-out, padding-bottom 0.25s;
+}
+
+.faq-answer p {
+    font-size: 0.95rem;
+    color: var(--text-dim);
+    padding: 0 0 14px 0;
+    line-height: 1.5;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 200px; /* aumenta se servono risposte più lunghe */
+    opacity: 1;
+    padding-bottom: 12px;
+}
+
+@media (max-width: 768px) {
+    .faq-container {
+        padding: 0 15px;
+    }
+
+    .faq-question {
+        font-size: 0.95rem;
+        padding: 14px 15px;
+    }
+}
+
+
 
 /* =========================================
    9. CTA TICKETS & FOOTER

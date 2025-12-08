@@ -226,15 +226,14 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 // 6. EFFETTO OPACITÀ IMMAGINE HERO ALLO SCROLL
 // ---------------------------------------------
+window.addEventListener('scroll', function () {
+  const heroSection = document.querySelector('#hero');
+  const heroBg = document.querySelector('.hero-bg');
+  const heroHeight = heroSection.offsetHeight;
 
-window.addEventListener('scroll', function() {
-    const heroSection = document.querySelector('#hero');
-    const heroBgImage = document.querySelector('.hero-bg-image');
-    const heroHeight = heroSection.offsetHeight;
-    
-    if (window.scrollY > heroHeight) {
-        heroBgImage.style.opacity = '0';
-    } else {
-        heroBgImage.style.opacity = '1';
-    }
+  if (window.scrollY > heroHeight) {
+    heroBg.style.opacity = '0';
+  } else {
+    heroBg.style.opacity = '1';
+  }
 });

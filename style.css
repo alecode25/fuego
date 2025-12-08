@@ -179,11 +179,9 @@ ul {
     background: white;
 }
 
-
-/* hero section */
-#hero {
+/* base hero */
+#hero.hero {
     height: 100dvh;
-    /* anche l'hero usa dvh */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -192,69 +190,53 @@ ul {
     overflow: hidden;
 }
 
-.hero-bg-image {
-    position: absolute;
-    inset: 0;
-    /* top/right/bottom/left: 0 */
+/* sfondo immagine fisso */
+.hero-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
+    height: 100dvh;
+    background: url("GPP01731(1).jpg") center/cover no-repeat;
     z-index: 0;
 }
 
-/* Fallback per browser che non supportano dvh */
+/* overlay scuro uniforme */
+.hero-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100dvh;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+}
+
+/* contenuto */
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 20px;
+}
+
 @supports not (height: 100dvh) {
-    .hero-bg-image {
-        height: 100vh;
-        min-height: -webkit-fill-available;
-    }
 
-    #hero {
+    #hero.hero,
+    .hero-bg,
+    .hero-overlay {
         height: 100vh;
         min-height: -webkit-fill-available;
     }
 }
 
 @media (max-width: 768px) {
-    .hero-bg-image {
-        height: calc(100vh + 100px);
-        /* estendi l'immagine oltre il viewport */
-        top: 0;
+    #hero.hero {
+        height: 100dvh;
     }
 }
 
-@media (max-width: 768px) {
-    .hero-bg-image {
-        position: fixed;
-        top: -100px;
-        /* estendi molto sopra */
-        left: -20px;
-        width: calc(100% + 40px);
-        /* estendi ai lati */
-        height: calc(100vh + 200px);
-        /* estendi molto sotto */
-        object-fit: cover;
-        object-position: center center;
-        z-index: 0;
-    }
 
-    /* Assicura che tutte le sezioni abbiano sfondo solido */
-    section {
-        background: var(--bg-color) !important;
-        position: relative;
-        z-index: 2;
-    }
 
-    #foto-gallery,
-    #video-wall,
-    #eventi-mese {
-        background: var(--bg-color) !important;
-        margin: 0 !important;
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-    }
-}
 
 
 .overlay {
@@ -344,6 +326,8 @@ ul {
     overflow: hidden;
     /* aggiungi per nascondere overflow */
 }
+
+
 
 .section-title {
     text-align: center;
@@ -822,8 +806,8 @@ ul {
    9. CTA TICKETS & FOOTER
    ========================================= */
 .cta-section {
-    background: var(--primary);          
-    color: black;             
+    background: var(--primary) !important;
+    color: black;
     padding: 100px 20px;
     text-align: center;
     clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
@@ -1064,6 +1048,11 @@ footer p {
     .video-box {
         width: 200px;
         height: 350px;
+    }
+
+
+    .cta-section {
+        background: var(--primary);
     }
 
     .cta-section h2 {

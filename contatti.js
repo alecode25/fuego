@@ -100,3 +100,42 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx6ea0zKuBymZ4iuTcNwjSTbI6i0orsylUzi5xhTOlYYrdErvrSa_-H7hVFdZ1xiKFn/exec';
+
+
+function showToast(message, type = 'ok') {
+  const toast = document.getElementById('toast');
+  toast.textContent = message;
+  toast.className = `toast show ${type}`;
+
+  setTimeout(() => {
+    toast.className = 'toast';
+  }, 3000); // 3 secondi
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.querySelector('#contact-form form');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+
+    try {
+      await fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: formData
+      });
+
+      showToast('Richiesta inviata correttamente!', 'ok');
+      form.reset();
+    } catch (err) {
+      console.error(err);
+      showToast('Errore durante l\'invio. Riprova più tardi.', 'error');
+    }
+  });
+});
+

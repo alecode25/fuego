@@ -1,3 +1,72 @@
+
+/* =========================================
+   NUOVA SEZIONE MAIN CONTENT
+   ========================================= */
+#main-content {
+    width: 100%;
+    height: 60vh; /* Regola l'altezza */
+    margin-top: 84px; /* Spazio per l'header fisso */
+    position: relative;
+    overflow: hidden;
+
+    /* Sfondo */
+    background-image: url('GPP01731\(1\).jpg'); /* Sostituisci con il tuo file */
+    background-size: cover;
+    background-position: center;
+
+    /* Centra il contenuto */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* Oscuramento */
+    box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.4);
+}
+
+.main-content-wrapper {
+    z-index: 5;
+}
+
+.main-cta-button {
+    padding: 18px 45px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #fff;
+    border: 3px solid var(--primary);
+    background: rgba(0, 0, 0, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    border-radius: 5px;
+    transition: 0.4s;
+    box-shadow: 0 0 20px var(--primary);
+    cursor: pointer; /* Aggiunto per usabilità */
+}
+
+.main-cta-button:hover {
+    background: var(--primary);
+    color: #000;
+    box-shadow: 0 0 40px var(--primary);
+    transform: scale(1.1);
+}
+
+/* Responsive Mobile */
+@media (max-width: 768px) {
+    #main-content {
+        height: 40vh;
+        margin-top: 74px; /* Adatta l'header su mobile */
+    }
+
+    .main-cta-button {
+        font-size: 1.1rem;
+        padding: 12px 30px;
+    }
+}
+
+
+
+
+
+
 /* =========================================
    1. VARIABILI & SETUP (TEMA FUEGO)
    ========================================= */
@@ -50,19 +119,14 @@ ul {
     position: fixed;
     top: 0;
     width: 100%;
-    padding: 12px 3% 12px 3%;
+    padding: 15px 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: transparent;
-    backdrop-filter: none;
-    border-bottom: 1px solid transparent;
+    background: rgba(5, 5, 5, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 60, 0, 0.3);
     z-index: 1000;
-    transition: background 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-        backdrop-filter 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-        border-bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-        transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    transform: translateY(0);
 }
 
 #main-header.scrolled {

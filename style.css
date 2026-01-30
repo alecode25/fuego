@@ -72,26 +72,35 @@
    ========================================= */
 :root {
     --bg-color: #050505;
+    /* Nero Profondo */
     --box-bg: #111111;
+    /* Grigio Scuro per le card */
     --primary: #ff3c00;
+    /* Rosso Fuoco acceso */
     --secondary: #ffaa00;
+    /* Giallo/Arancio */
     --text-main: #ffffff;
     --text-dim: #b3b3b3;
     --gradient: linear-gradient(75deg, var(--primary), var(--secondary));
     --shadow-glow: 0 0 30px rgba(255, 60, 0, 0.4);
     --font-title: 'Teko', sans-serif;
+    /* Nuovo font titoli */
     --font-body: 'Inter', sans-serif;
+    /* Nuovo font corpo */
+}
+
+html {
+    margin: 0;
+    padding: 0;
+    background: var(--bg-color);
+    overflow-x: hidden;
+    width: 100%;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-html,
-body {
-    height: 100%;
 }
 
 body {
@@ -101,7 +110,13 @@ body {
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
+    margin: 0;
+    padding: 0;
+    width: 100%;
 }
+
+
+
 
 a {
     text-decoration: none;
@@ -113,7 +128,7 @@ ul {
 }
 
 /* =========================================
-   2. HEADER & NAVBAR
+   2. HEADER & NAVBAR (DAL SECONDO CSS)
    ========================================= */
 #main-header {
     position: fixed;
@@ -228,14 +243,9 @@ ul {
     background: white;
 }
 
-/* =========================================
-   3. HERO SECTION
-   ========================================= */
-/* =========================================
-   3. HERO SECTION
-   ========================================= */
-#hero {
-    height: 100vh;
+/* base hero */
+#hero.hero {
+    height: 100dvh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -244,16 +254,54 @@ ul {
     overflow: hidden;
 }
 
-.hero-bg-image {
-    position: absolute;
+/* sfondo immagine fisso */
+.hero-bg {
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center center;
+    height: 100dvh;
+    background: url("assets/GPP01731_1_.avif") center/cover no-repeat;
     z-index: 0;
 }
+
+/* overlay scuro uniforme */
+.hero-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100dvh;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+}
+
+/* contenuto */
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 20px;
+}
+
+@supports not (height: 100dvh) {
+
+    #hero.hero,
+    .hero-bg,
+    .hero-overlay {
+        height: 100vh;
+        min-height: -webkit-fill-available;
+    }
+}
+
+@media (max-width: 768px) {
+    #hero.hero {
+        height: 100dvh;
+    }
+}
+
+
+
+
 
 .overlay {
     position: absolute;
@@ -261,12 +309,15 @@ ul {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), var(--bg-color));
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(5, 5, 5, 1));
     z-index: 1;
+    /* sopra l'immagine */
+    pointer-events: none;
 }
 
 .hero-content {
     z-index: 2;
+    /* sopra tutto */
     padding: 0 20px;
     position: relative;
 }
@@ -278,12 +329,17 @@ ul {
     margin-bottom: 20px;
     color: white;
     text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    position: relative;
+    z-index: 3;
+    /* assicura che sia visibile */
 }
 
 #hero p {
     font-size: 1.2rem;
     margin-bottom: 40px;
     color: #ddd;
+    position: relative;
+    z-index: 3;
 }
 
 .cta-button {
@@ -297,6 +353,10 @@ ul {
     letter-spacing: 2px;
     transition: 0.4s;
     box-shadow: 0 0 15px var(--primary);
+    position: relative;
+    z-index: 3;
+    /* assicura che sia cliccabile */
+    display: inline-block;
 }
 
 .cta-button:hover {
@@ -310,15 +370,28 @@ ul {
 /* =========================================
    4. SEZIONI GENERALI & TITOLI
    ========================================= */
+/* Elimina gap tra sezioni */
 .sezione-dark {
     padding: 80px 0;
     background: var(--bg-color);
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    /* aggiungi */
 }
 
 #foto-gallery {
     padding-top: 120px;
     padding-bottom: 80px;
+    background: var(--bg-color);
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    overflow: hidden;
+    /* aggiungi per nascondere overflow */
 }
+
+
 
 .section-title {
     text-align: center;
@@ -337,7 +410,58 @@ ul {
 }
 
 /* =========================================
-   5. CAROUSEL (FOTO & VIDEO)
+   NUOVA SEZIONE: CHI SIAMO (Stile Contest)
+   ========================================= */
+#chi-siamo-sezione {
+    padding: 80px 20px;
+    background: var(--bg-color);
+}
+
+.chi-siamo-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background: var(--box-bg);
+    border-radius: 20px;
+    border: 3px solid var(--primary);
+    box-shadow: 0 0 40px rgba(255, 60, 0, 0.7);
+    text-align: center;
+}
+
+.chi-siamo-icon {
+    font-size: 5rem;
+    color: var(--secondary);
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px var(--secondary);
+}
+
+.chi-siamo-content h3 {
+    font-family: var(--font-title);
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 15px;
+}
+
+.chi-siamo-content p {
+    font-size: 1.1rem;
+    color: var(--text-dim);
+    margin-bottom: 30px;
+    line-height: 1.6;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.chi-siamo-box .cta-contest {
+    margin-top: 0;
+}
+
+/* =========================================
+   5. CAROUSEL (FOTO & VIDEO) - LOGICA FLUIDA
    ========================================= */
 .carousel-wrapper {
     width: 100%;
@@ -345,7 +469,10 @@ ul {
     white-space: nowrap;
     padding: 20px 0;
     position: relative;
+    background: var(--bg-color);
+    /* aggiungi sfondo nero */
 }
+
 
 .slide-box {
     display: inline-block;
@@ -455,6 +582,8 @@ ul {
     pointer-events: none;
 }
 
+
+
 /* =========================================
    7. EVENTI DEL MESE
    ========================================= */
@@ -465,30 +594,41 @@ ul {
 }
 
 .event-grid {
-    display: flex;
-    gap: 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 40px;
     padding: 0 5%;
-    max-width: 100%;
+    max-width: 1600px;
     margin: 0 auto;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
-    scrollbar-color: var(--primary) transparent;
 }
 
-.event-grid::-webkit-scrollbar {
-    height: 8px;
-}
+@media (max-width: 768px) {
+    .event-grid {
+        display: flex;
+        grid-template-columns: none;
+        gap: 40px;
+        padding: 0 5%;
+        max-width: 100%;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+        scrollbar-color: var(--primary) transparent;
+    }
 
-.event-grid::-webkit-scrollbar-track {
-    background: transparent;
-}
+    .event-grid::-webkit-scrollbar {
+        height: 8px;
+    }
 
-.event-grid::-webkit-scrollbar-thumb {
-    background: var(--primary);
-    border-radius: 4px;
+    .event-grid::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .event-grid::-webkit-scrollbar-thumb {
+        background: var(--primary);
+        border-radius: 4px;
+    }
 }
 
 .event-card {
@@ -498,12 +638,17 @@ ul {
     overflow: hidden;
     transition: 0.3s;
     position: relative;
-    min-width: calc(100vw - 10%);
-    max-width: calc(100vw - 10%);
-    width: calc(100vw - 10%);
-    flex-shrink: 0;
-    scroll-snap-align: center;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+@media (max-width: 768px) {
+    .event-card {
+        min-width: calc(100vw - 10%);
+        max-width: calc(100vw - 10%);
+        width: calc(100vw - 10%);
+        flex-shrink: 0;
+        scroll-snap-align: center;
+    }
 }
 
 .event-card:hover {
@@ -513,7 +658,7 @@ ul {
 
 .event-card-top {
     position: relative;
-    height: 280px;
+    height: 320px;
     display: flex;
     overflow: hidden;
 }
@@ -547,10 +692,14 @@ ul {
     display: block;
 }
 
+.event-card-top {
+    position: relative;
+}
+
 .event-badge {
     position: absolute;
     top: 15px;
-    right: 15px;
+    left: 15px;
     background: #ff0000;
     color: white;
     padding: 6px 12px;
@@ -570,7 +719,7 @@ ul {
 
 .event-info h3 {
     font-family: 'Poppins', sans-serif;
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: 700;
     color: #fff;
     margin-bottom: 10px;
@@ -622,58 +771,7 @@ ul {
 }
 
 /* =========================================
-   8. CHI SIAMO
-   ========================================= */
-#chi-siamo-sezione {
-    padding: 80px 20px;
-    background: var(--bg-color);
-}
-
-.chi-siamo-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 40px 20px;
-    background: var(--box-bg);
-    border-radius: 20px;
-    border: 3px solid var(--primary);
-    box-shadow: 0 0 40px rgba(255, 60, 0, 0.7);
-    text-align: center;
-}
-
-.chi-siamo-icon {
-    font-size: 5rem;
-    color: var(--secondary);
-    margin-bottom: 20px;
-    text-shadow: 0 0 10px var(--secondary);
-}
-
-.chi-siamo-content h3 {
-    font-family: var(--font-title);
-    font-size: 2.5rem;
-    color: var(--primary);
-    margin-bottom: 15px;
-}
-
-.chi-siamo-content p {
-    font-size: 1.1rem;
-    color: var(--text-dim);
-    margin-bottom: 30px;
-    line-height: 1.6;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-}
-
-.chi-siamo-box .cta-contest {
-    margin-top: 0;
-}
-
-/* =========================================
-   9. CONTEST DEL MESE
+   8. CONTEST DEL MESE
    ========================================= */
 #contest-del-mese {
     padding: 80px 20px;
@@ -769,20 +867,111 @@ ul {
 }
 
 /* =========================================
-   10. CTA TICKETS & FOOTER
+   8. FAQ SECTION
+   ========================================= */
+.faq-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.faq-item {
+    margin-bottom: 18px;
+    border-radius: 14px;
+    background: radial-gradient(circle at top left, rgba(255,60,0,0.17), transparent 55%),
+                radial-gradient(circle at bottom right, rgba(255,170,0,0.14), transparent 55%),
+                #050505;
+    border: 1px solid #222;
+    box-shadow: 0 0 0 rgba(0,0,0,0);
+    overflow: hidden;
+    transition: border-color 0.25s, box-shadow 0.25s, transform 0.2s;
+}
+
+.faq-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.8);
+}
+
+.faq-item.active {
+    border-color: var(--secondary);
+    box-shadow: 0 0 18px rgba(255,170,0,0.45);
+}
+
+.faq-question {
+    width: 100%;
+    padding: 15px 18px;
+    border: none;
+    background: transparent;
+    color: #fff;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1rem;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.faq-question span {
+    flex: 1;
+    padding-right: 10px;
+}
+
+.faq-question i {
+    font-size: 0.95rem;
+    color: var(--secondary);
+    transition: transform 0.25s;
+}
+
+.faq-item.active .faq-question i {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    opacity: 0;
+    padding: 0 18px;
+    transition: max-height 0.3s ease-out, opacity 0.25s ease-out, padding-bottom 0.25s;
+}
+
+.faq-answer p {
+    font-size: 0.95rem;
+    color: var(--text-dim);
+    padding: 0 0 14px 0;
+    line-height: 1.5;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 200px; /* aumenta se servono risposte più lunghe */
+    opacity: 1;
+    padding-bottom: 12px;
+}
+
+@media (max-width: 768px) {
+    .faq-container {
+        padding: 0 15px;
+    }
+
+    .faq-question {
+        font-size: 0.95rem;
+        padding: 14px 15px;
+    }
+}
+
+
+
+/* =========================================
+   9. CTA TICKETS & FOOTER
    ========================================= */
 .cta-section {
-    background: var(--primary);
+    background: var(--primary) !important;
     color: black;
     padding: 100px 20px;
     text-align: center;
     clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
-}
-
-.cta-section h2 {
-    font-size: 4rem;
-    font-family: var(--font-title);
-    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
 }
 
 .mega-button {
@@ -798,6 +987,15 @@ ul {
     border: 4px solid white;
 }
 
+
+.cta-section h2 {
+    font-size: 4rem;
+    font-family: var(--font-title);
+    margin-bottom: 20px;
+}
+
+
+
 .mega-button:hover {
     background: white;
     color: black;
@@ -810,6 +1008,8 @@ footer {
     text-align: center;
     border-top: 2px solid var(--primary);
     margin-top: auto;
+    position: relative;
+    z-index: 2;
 }
 
 footer p {
@@ -862,7 +1062,7 @@ footer p {
 }
 
 /* =========================================
-   11. ANIMAZIONI
+   10. ANIMAZIONI
    ========================================= */
 @keyframes pulse {
     0% {
@@ -894,7 +1094,7 @@ footer p {
 }
 
 /* =========================================
-   12. RESPONSIVE MOBILE
+   11. RESPONSIVE MOBILE
    ========================================= */
 @media (max-width: 768px) {
     #hero h1 {
@@ -1007,6 +1207,11 @@ footer p {
     .video-box {
         width: 200px;
         height: 350px;
+    }
+
+
+    .cta-section {
+        background: var(--primary);
     }
 
     .cta-section h2 {

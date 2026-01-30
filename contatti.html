@@ -11,7 +11,7 @@
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Oswald:wght@400;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    <link rel="preload" as="image" href="assets/GPP01316-2.avif" fetchpriority="high">
     <link rel="stylesheet" href="contatti.css">
 </head>
 
@@ -20,8 +20,8 @@
     <header id="main-header">
         <div class="logo-combo">
             <a href="index.html">
-                <img src="logo.png" class="logo-header" alt="FUEGO Rimini Logo">
-                </a>
+                <img src="assets/logo.png" class="logo-header" alt="FUEGO Rimini Logo">
+            </a>
         </div>
         <div class="hamburger-menu"><i class="fas fa-bars"></i></div>
         <nav class="nav-menu">
@@ -30,7 +30,6 @@
                 <li><a href="index.html#foto-gallery">Foto</a></li>
                 <li><a href="index.html#video-wall">Video</a></li>
                 <li><a href="index.html#eventi-mese">Eventi</a></li>
-                <li><a href="index.html#staff">Staff</a></li>
                 <li><a href="index.html#contest-del-mese">Contest</a></li>
                 <li><a href="index.html#chi-siamo-sezione">Chi Siamo</a></li>
                 <li><a href="index.html#tickets" class="btn-nav">Prevendita</a></li>
@@ -39,7 +38,10 @@
     </header>
 
     <section id="contact-hero">
-        <div class="overlay"></div>
+        <div class="contact-hero-bg"></div>
+        <div class="contact-hero-overlay"></div>
+
+
         <div class="hero-content">
             <h1>CONTATTACI</h1>
             <p>Siamo pronti ad accendere la tua notte. Scrivici o chiamaci per informazioni su tavoli, eventi e liste.
@@ -83,40 +85,60 @@
                     <label for="nome">Nome e Cognome</label>
                     <input type="text" id="nome" name="nome" required>
                 </div>
+
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email" required>
                 </div>
+
                 <div class="form-group">
                     <label for="telefono">Telefono</label>
                     <input type="tel" id="telefono" name="telefono">
                 </div>
+
+                <!-- NUOVO CAMPO MOTIVO -->
+                <div class="form-group">
+                    <label for="motivo">Motivo del contatto</label>
+                    <select id="motivo" name="motivo" required>
+                        <option value="" disabled selected>Seleziona un'opzione</option>
+                        <option value="evento">Info / prenotazione evento</option>
+                        <option value="staff">Entrare a far parte dello staff</option>
+                        <option value="problemi">Problemi / segnalazioni</option>
+                        <option value="altro">Altro</option>
+                    </select>
+                </div>
+
                 <div class="form-group">
                     <label for="messaggio">Messaggio (Specificare data evento)</label>
                     <textarea id="messaggio" name="messaggio" rows="5" required></textarea>
                 </div>
+
                 <button type="submit" class="mega-button">INVIA RICHIESTA</button>
+                <p id="form-status" class="form-status"></p>
+
             </form>
         </div>
     </section>
-<section id="join-staff" class="sezione-dark">
-    <div class="join-box">
-        <div class="join-info">
-            <h2 class="section-title">VUOI ENTRARE NEL FUEGO STAFF?</h2>
-            <p class="subtitle">Cerchiamo persone cariche, motivate e con la fiamma dentro. Invia ora la tua candidatura per far parte della crew più hot di Rimini.</p>
-            
-            <div class="staff-rols">
-                <span class="rol-tag"><i class="fas fa-fire"></i> Public Relations (PR)</span>
-                <span class="rol-tag"><i class="fas fa-cocktail"></i> Bar Staff</span>
-                <span class="rol-tag"><i class="fas fa-drum"></i> DJ & Tecnici</span>
+
+    <section id="join-staff" class="sezione-dark">
+        <div class="join-box">
+            <div class="join-info">
+                <h2 class="section-title">VUOI ENTRARE NEL FUEGO STAFF?</h2>
+                <p class="subtitle">Cerchiamo persone cariche, motivate e con la fiamma dentro. Invia ora la tua
+                    candidatura per far parte della crew più hot di Rimini.</p>
+
+                <div class="staff-rols">
+                    <span class="rol-tag"><i class="fas fa-fire"></i> Public Relations (PR)</span>
+                    <span class="rol-tag"><i class="fas fa-cocktail"></i> Bar Staff</span>
+                    <span class="rol-tag"><i class="fas fa-drum"></i> DJ & Tecnici</span>
+                </div>
+
+                <p class="join-call">Se hai l'energia giusta, compila il form qui sotto specificando la posizione.</p>
+
+                <a href="#contact-form" class="cta-staff-button">CANDIDATI ORA</a>
             </div>
-            
-            <p class="join-call">Se hai l'energia giusta, compila il form qui sotto specificando la posizione.</p>
-            
-            <a href="#contact-form" class="cta-staff-button">CANDIDATI ORA</a>
         </div>
-    </div>
-</section>
+    </section>
     <section id="location" class="sezione-dark">
         <h2 class="section-title">DOVE SIAMO</h2>
         <p class="subtitle">Viale Regina Elena, 100 - Rimini (RN)</p>
@@ -130,10 +152,12 @@
 
     <footer class="footer-social">
         <div class="social-row">
-            <a href="https://www.instagram.com/fuego_official_events/" target="_blank" aria-label="Instagram" class="ig-link">
+            <a href="https://www.instagram.com/fuego_official_events/" target="_blank" aria-label="Instagram"
+                class="ig-link">
                 <i class="fab fa-instagram"></i>
             </a>
-            <a href="https://www.tiktok.com/@staff_fuego_?is_from_webapp=1&sender_device=pc" target="_blank" aria-label="TikTok" class="tt-link">
+            <a href="https://www.tiktok.com/@staff_fuego_?is_from_webapp=1&sender_device=pc" target="_blank"
+                aria-label="TikTok" class="tt-link">
                 <i class="fab fa-tiktok"></i>
             </a>
         </div>
@@ -141,6 +165,7 @@
     </footer>
 
 
+    <div id="toast" class="toast"></div>
 
     <script src="contatti.js"></script>
 </body>

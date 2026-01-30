@@ -224,3 +224,35 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
 });
+// 6. EFFETTO OPACITÀ IMMAGINE HERO ALLO SCROLL
+// ---------------------------------------------
+window.addEventListener('scroll', function () {
+  const heroSection = document.querySelector('#hero');
+  const heroBg = document.querySelector('.hero-bg');
+  const heroHeight = heroSection.offsetHeight;
+
+  if (window.scrollY > heroHeight) {
+    heroBg.style.opacity = '0';
+  } else {
+    heroBg.style.opacity = '1';
+  }
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+
+
+  const faqItems = document.querySelectorAll('.faq-item');
+
+  faqItems.forEach(item => {
+    const btn = item.querySelector('.faq-question');
+    btn.addEventListener('click', () => {
+      // chiudi le altre
+      faqItems.forEach(i => {
+        if (i !== item) i.classList.remove('active');
+      });
+      // toggle questa
+      item.classList.toggle('active');
+    });
+  });
+});

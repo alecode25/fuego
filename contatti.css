@@ -17,14 +17,15 @@
     background: var(--box-bg);
     border-radius: 15px;
     border: 3px solid var(--secondary);
-    box-shadow: 0 0 40px rgba(255, 170, 0, 0.5); /* Effetto "luce calda" */
+    box-shadow: 0 0 40px rgba(255, 170, 0, 0.5);
+    /* Effetto "luce calda" */
     text-align: center;
 }
 
 .join-box .section-title {
-    color: var(--secondary); /* Titolo giallo/arancio in evidenza */
-    text-shadow: 2px 2px 0px var(--primary);
-    margin-bottom: 5px;
+    color: rgb(122, 0, 0);
+    ;
+
 }
 
 .join-box .subtitle {
@@ -42,7 +43,8 @@
 }
 
 .rol-tag {
-    background: var(--primary); /* Sfondo rosso fuoco */
+    background: var(--primary);
+    /* Sfondo rosso fuoco */
     color: black;
     padding: 8px 15px;
     border-radius: 25px;
@@ -90,17 +92,21 @@
     .join-box {
         padding: 30px 15px;
     }
+
     .join-box .section-title {
         font-size: 2rem;
     }
+
     .rol-tag {
         font-size: 0.8rem;
     }
+
     .cta-staff-button {
         padding: 12px 30px;
         font-size: 1rem;
     }
 }
+
 /* =========================================
    1. VARIABILI & SETUP (TEMA FUEGO)
    ========================================= */
@@ -120,8 +126,10 @@
     --gradient: linear-gradient(45deg, var(--primary), var(--secondary));
     --shadow-glow: 0 0 20px rgba(255, 60, 0, 0.4);
 
-     --font-title: 'Teko', sans-serif;   /* Nuovo font titoli */
-    --font-body: 'Inter', sans-serif;   /* Nuovo font corpo */
+    --font-title: 'Teko', sans-serif;
+    /* Nuovo font titoli */
+    --font-body: 'Inter', sans-serif;
+    /* Nuovo font corpo */
 }
 
 
@@ -166,9 +174,9 @@ ul {
     border-bottom: 1px solid transparent;
     z-index: 1000;
     transition: background 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-                backdrop-filter 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-                border-bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-                transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        backdrop-filter 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        border-bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     transform: translateY(0);
 }
 
@@ -239,7 +247,7 @@ ul {
     text-transform: uppercase;
     font-size: 0.9rem;
     transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-                text-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        text-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 
@@ -268,76 +276,67 @@ ul {
     font-size: 1.5rem;
     color: white;
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-                color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 
 /* =========================================
    3. HERO CONTATTI
    ========================================= */
+/* =========================================
+   3. HERO CONTATTI – STESSA LOGICA DELL'HOME
+   ========================================= */
+
+/* HERO CONTATTI */
+/* HERO CONTATTI */
+/* HERO */
 #contact-hero {
-    height: 60vh;
-    background-image: url('GPP01316-2.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     position: relative;
+    overflow: hidden;
+    background: url("assets/GPP01316-2.avif") center/cover no-repeat fixed;
+    /* effetto quasi fisso [web:5][web:20] */
 }
 
+/* rimuovi QUESTI elementi dall'HTML:
+   <div class="contact-hero-bg"></div>
+   <div class="contact-hero-overlay"></div>
+   <div class="contact-hero-mask"></div>
+*/
 
-.overlay {
+/* overlay scuro direttamente sull'hero */
+#contact-hero::before {
+    content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), var(--bg-color));
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    z-index: 1;
 }
+
+/* contenuto */
+#contact-hero .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 20px 40px 20px;
+    color: #fff;
+}
+
 
 
 
 @media (max-width: 768px) {
     #contact-hero {
-        min-height: 40vh;
-        padding: 40px 0 20px 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-    }
-
-    .hero-content {
-        width: 100%;
-        max-width: 95vw;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 40px 10px 30px 10px;
-        color: white;
-        background: none;
-    }
-
-    #contact-hero h1 {
-        font-size: 2.2rem;
-        margin-bottom: 16px;
-        letter-spacing: 2px;
-        text-align: center;
-    }
-
-    #contact-hero p {
-        font-size: 1.07rem;
-        margin: 0;
-        margin-bottom: 8px;
-        text-align: center;
-        color: #eaeaea;
+        padding: 100px 0 60px 0;
+        /* NON mettere più height/min-height qui */
     }
 }
+
+
+
 
 /* =========================================
    4. SEZIONI GENERALI & TITOLI
@@ -352,9 +351,9 @@ ul {
     text-align: center;
     font-family: var(--font-title);
     font-size: 3rem;
-    color: white;
+    color: rgb(122, 0, 0);
+    ;
     margin-bottom: 10px;
-    text-shadow: 2px 2px 0px var(--primary);
 }
 
 
@@ -369,8 +368,12 @@ ul {
    5. INFO LINE GRID
    ========================================= */
 #contact-info {
-    padding-top: 40px;
+    margin-top: 0;
+    /* oppure -20px, se vuoi ancora un leggero overlap */
+    padding-top: 120px;
+    /* o -60px se vuoi ancora più attacco */
 }
+
 
 
 .info-grid {
@@ -516,6 +519,70 @@ textarea {
     color: black;
 }
 
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #333;
+    border-radius: 8px;
+    background: var(--bg-color);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    transition: 0.3s;
+    appearance: none;
+}
+
+.form-group select:focus {
+    outline: none;
+    border-color: var(--secondary);
+    box-shadow: 0 0 10px rgba(255, 170, 0, 0.3);
+}
+
+.form-status {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* success */
+.form-status.ok {
+    color: #4caf50;
+}
+
+/* errore */
+.form-status.error {
+    color: #ff3c00;
+}
+
+.toast {
+    position: fixed;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+    background: #111;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 9999;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-10px);
+}
+
+.toast.ok {
+    border: 1px solid #4caf50;
+}
+
+.toast.error {
+    border: 1px solid #ff3c00;
+}
 
 /* =========================================
    7. MAPPA
@@ -570,7 +637,7 @@ footer p {
 }
 
 .footer-social {
-    background: var(--box-bg, #111);
+    background: var(--bg-color);
     padding: 36px 0 18px 0;
     text-align: center;
     border-top: 2px solid var(--primary, #ff3c00);
@@ -640,8 +707,8 @@ footer p {
         transform: translateY(-20px) scale(0.95);
         pointer-events: none;
         transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-                    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-                    max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+            max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         max-height: 0;
         overflow: hidden;
     }
@@ -652,15 +719,15 @@ footer p {
         pointer-events: auto;
         max-height: 100vh;
         transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-                    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-                    max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+            max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     /* Animazione di chiusura più veloce e con effetto diverso */
     .nav-menu:not(.active) {
         transition: opacity 0.25s cubic-bezier(0.55, 0.055, 0.675, 0.19),
-                    transform 0.25s cubic-bezier(0.55, 0.055, 0.675, 0.19),
-                    max-height 0.25s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+            transform 0.25s cubic-bezier(0.55, 0.055, 0.675, 0.19),
+            max-height 0.25s cubic-bezier(0.55, 0.055, 0.675, 0.19);
         transform: translateY(10px) scale(0.98);
     }
 
@@ -674,7 +741,7 @@ footer p {
         opacity: 0;
         transform: translateY(-10px);
         transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-                    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .nav-menu.active ul li {
@@ -682,21 +749,44 @@ footer p {
         transform: translateY(0);
     }
 
-    .nav-menu.active ul li:nth-child(1) { transition-delay: 0.05s; }
-    .nav-menu.active ul li:nth-child(2) { transition-delay: 0.1s; }
-    .nav-menu.active ul li:nth-child(3) { transition-delay: 0.15s; }
-    .nav-menu.active ul li:nth-child(4) { transition-delay: 0.2s; }
-    .nav-menu.active ul li:nth-child(5) { transition-delay: 0.25s; }
-    .nav-menu.active ul li:nth-child(6) { transition-delay: 0.3s; }
-    .nav-menu.active ul li:nth-child(7) { transition-delay: 0.35s; }
-    .nav-menu.active ul li:nth-child(8) { transition-delay: 0.4s; }
+    .nav-menu.active ul li:nth-child(1) {
+        transition-delay: 0.05s;
+    }
+
+    .nav-menu.active ul li:nth-child(2) {
+        transition-delay: 0.1s;
+    }
+
+    .nav-menu.active ul li:nth-child(3) {
+        transition-delay: 0.15s;
+    }
+
+    .nav-menu.active ul li:nth-child(4) {
+        transition-delay: 0.2s;
+    }
+
+    .nav-menu.active ul li:nth-child(5) {
+        transition-delay: 0.25s;
+    }
+
+    .nav-menu.active ul li:nth-child(6) {
+        transition-delay: 0.3s;
+    }
+
+    .nav-menu.active ul li:nth-child(7) {
+        transition-delay: 0.35s;
+    }
+
+    .nav-menu.active ul li:nth-child(8) {
+        transition-delay: 0.4s;
+    }
 
     /* Animazione più veloce per i link quando il menu si chiude */
     .nav-menu:not(.active) ul li {
         opacity: 0;
         transform: translateY(5px);
         transition: opacity 0.2s cubic-bezier(0.55, 0.055, 0.675, 0.19),
-                    transform 0.2s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+            transform 0.2s cubic-bezier(0.55, 0.055, 0.675, 0.19);
         transition-delay: 0s !important;
     }
 
@@ -710,7 +800,7 @@ footer p {
         font-size: 1.8rem;
         color: white;
         transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-                    color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     /* Logo più piccolo su mobile */

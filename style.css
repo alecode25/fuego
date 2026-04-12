@@ -1397,4 +1397,98 @@ footer p {
     .contest-poster {
         margin-bottom: 0;
     }
+    /* --- SEZIONE I NOSTRI POSTI (VERSIONE TESTO) --- */
+#i-nostri-posti {
+    padding: 60px 0;
+    overflow: hidden;
+    background: #000;
+}
+
+.marquee-container {
+    margin-top: 40px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background: rgba(255, 46, 0, 0.05); /* Sfondo leggerissimo rosso */
+    border-top: 1px solid rgba(255, 46, 0, 0.2);
+    border-bottom: 1px solid rgba(255, 46, 0, 0.2);
+    padding: 25px 0;
+}
+
+.marquee-content {
+    display: flex;
+    white-space: nowrap;
+    animation: marquee-scroll 30s linear infinite;
+}
+
+/* Animazione fluida */
+@keyframes marquee-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.club-name {
+    font-family: 'Oswald', sans-serif;
+    font-size: 3rem; /* Molto grande su Desktop */
+    font-weight: 700;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3); /* Effetto contorno */
+    padding: 0 40px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.club-divider {
+    font-size: 2.5rem;
+    color: #ff2e00;
+    display: flex;
+    align-items: center;
+}
+
+/* Effetto al passaggio del mouse: la scritta si riempie di colore */
+.club-name:hover {
+    color: #fff;
+    -webkit-text-stroke: 1px #ff2e00;
+    text-shadow: 0 0 20px rgba(255, 46, 0, 0.6);
+    transform: scale(1.05);
+}
+
+/* --- RESPONSIVE --- */
+
+/* Tablet */
+@media (max-width: 992px) {
+    .club-name {
+        font-size: 2.2rem;
+        padding: 0 25px;
+    }
+    .marquee-container {
+        padding: 20px 0;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .club-name {
+        font-size: 1.5rem; /* Più piccolo per smartphone */
+        padding: 0 15px;
+        -webkit-text-stroke: 0.5px rgba(255, 255, 255, 0.5);
+    }
+    .club-divider {
+        font-size: 1.2rem;
+    }
+    .marquee-container {
+        padding: 15px 0;
+        margin-top: 25px;
+    }
+    /* Velocizziamo leggermente lo scroll su mobile */
+    .marquee-content {
+        animation-duration: 20s;
+    }
+}
+
+/* Ferma l'animazione se l'utente ci passa sopra (opzionale) */
+.marquee-container:hover .marquee-content {
+    animation-play-state: paused;
+}
 }
